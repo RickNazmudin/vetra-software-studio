@@ -44,11 +44,21 @@ function LoginForm() {
       }
 
       if (data?.user) {
-        router.push(redirectTo);
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("role")
+          .eq("id", data.user.id)
+          .single();
+
+        if (profile?.role === "ADMIN" && redirectTo === "/dashboard") {
+          router.push("/admin");
+        } else {
+          router.push(redirectTo);
+        }
       }
     } catch {
-      localStorage.setItem("vetra_mock_session", JSON.stringify({ email, role: "CUSTOMER" }));
-      router.push(redirectTo);
+      localStorage.setItem("vetra_mock_session", JSON.stringify({ email, role: email.includes("admin") ? "ADMIN" : "CUSTOMER" }));
+      router.push(email.includes("admin") ? "/admin" : redirectTo);
     } finally {
       setLoading(false);
     }
