@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <rect width="180" height="180" rx="40" fill="#090B0F"/>
+  <rect x="2" y="2" width="176" height="176" rx="38" stroke="#232938" stroke-width="4"/>
+  
+  <!-- Left Wing Facet -->
+  <path d="M45 48L79 48L90 110L76 110L45 48Z" fill="url(#left_grad)"/>
+  
+  <!-- Right Wing Facet -->
+  <path d="M135 48L101 48L90 110L104 110L135 48Z" fill="url(#right_grad)"/>
+  
+  <!-- Center Apex Node -->
+  <path d="M81.5 101L90 132L98.5 101L90 94L81.5 101Z" fill="#FFFFFF"/>
+  
+  <!-- Studio Accent -->
+  <circle cx="90" cy="62" r="7" fill="#3B82F6"/>
+
+  <defs>
+    <linearGradient id="left_grad" x1="45" y1="48" x2="90" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="right_grad" x1="135" y1="48" x2="90" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E2E8F0"/>
+      <stop offset="1" stop-color="#64748B"/>
+    </linearGradient>
+  </defs>
+</svg>

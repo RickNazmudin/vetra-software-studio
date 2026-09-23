@@ -1,0 +1,267 @@
+export type TranslationKey = string;
+
+export const translations: Record<string, { id: string; en: string }> = {
+  // Brand & Navbar
+  "nav.software": { id: "Software", en: "Software" },
+  "nav.custom": { id: "Layanan Custom", en: "Custom Dev" },
+  "nav.pricing": { id: "Harga & Lisensi", en: "Pricing & Plans" },
+  "nav.about": { id: "Filosofi Studio", en: "Studio Philosophy" },
+  "nav.signIn": { id: "Masuk", en: "Sign In" },
+  "nav.portal": { id: "Portal Customer", en: "Customer Portal" },
+  "nav.backToStore": { id: "Kembali ke Store", en: "Back to Store" },
+  "nav.backToCatalog": { id: "Kembali ke Katalog", en: "Back to Catalog" },
+
+  // Hero Section
+  "hero.badge": { id: "VETRA SOFTWARE STUDIO — SIAP PRODUKSI", en: "VETRA SOFTWARE STUDIO — PRODUCTION READY" },
+  "hero.title": { id: "Software yang dibangun untuk bisnis nyata.", en: "Software built for real business operations." },
+  "hero.subtitle": { 
+    id: "Software fokus, mandiri, dan berkinerja tinggi yang dirancang untuk menyelesaikan friksi operasional sehari-hari. Tersedia dengan lisensi permanen Lifetime atau langganan bulanan.",
+    en: "Focused, independent, and high-performance software engineered to solve real operational friction. Available with permanent Lifetime licenses or monthly plans."
+  },
+  "hero.ctaExplore": { id: "Jelajahi Katalog Software", en: "Explore Software Catalog" },
+  "hero.ctaManifesto": { id: "Filosofi Rekayasa", en: "Studio Philosophy" },
+  "hero.perpetual": { id: "Kepemilikan Permanen", en: "Lifetime Ownership" },
+  "hero.perpetualSub": { id: "Sekali beli, milik Anda selamanya.", en: "Pay once, own it forever." },
+  "hero.instantKey": { id: "Lisensi Instan", en: "Instant License Key" },
+  "hero.instantKeySub": { id: "Aktivasi instan via license key.", en: "Immediate activation via key." },
+  "hero.offlineReady": { id: "100% Siap Offline", en: "100% Offline Ready" },
+  "hero.offlineReadySub": { id: "100% jalan lancar tanpa internet.", en: "Runs smoothly without internet." },
+  "hero.noLockIn": { id: "Bebas Vendor Lock-in", en: "Zero Vendor Lock-in" },
+  "hero.noLockInSub": { id: "Database mandiri di perangkat Anda.", en: "Standalone database on your hardware." },
+
+  // Schedule & Telemetry Section
+  "telemetry.title": { id: "Status Sistem & Modul", en: "System Status & Modules" },
+  "telemetry.sub": { id: "Runtime berkesinambungan · Spesifikasi IDR & Global", en: "Continuous runtime · IDR & Global specs" },
+  "telemetry.direct": { id: "Telemetri langsung, tanpa perantara.", en: "Direct telemetry, zero middleman." },
+  "telemetry.directDesc": { id: "Software kami berkomunikasi langsung ke database lokal Anda tanpa ketergantungan server perantara yang lambat.", en: "Our software communicates directly to your local database without sluggish third-party intermediary dependencies." },
+
+  // Catalog Section on Homepage
+  "home.catalog.tag": { id: "Aplikasi yang Tersedia", en: "Available Applications" },
+  "home.catalog.title": { id: "Katalog Software Pilihan", en: "Selected Software Suite" },
+  "home.catalog.viewAll": { id: "Lihat semua produk", en: "View all products" },
+
+  // Why Us / Philosophy Section
+  "home.why.tag": { id: "Standar Vetra", en: "The Vetra Standard" },
+  "home.why.title": { id: "Mengapa kami membangun software independen.", en: "Why we build independent software." },
+  "home.why.desc1": { 
+    id: "Sebagian besar SaaS modern menjadi terlalu lambat, membengkak dengan fitur yang tidak dibutuhkan, dan mengenakan biaya langganan bulanan yang terus membengkak.",
+    en: "Most modern SaaS has become sluggish, bloated with unnecessary features, and charges perpetually increasing monthly fees."
+  },
+  "home.why.desc2": {
+    id: "Kami membangun software yang berfokus pada pekerjaan spesifik: kasir ritel, booking lapangan olahraga, dan penagihan invoice. Cepat, stabil, dan menghormati kendali pengguna.",
+    en: "We build software focused on specific jobs: retail POS, sports booking, and invoicing. Fast, resilient, and respecting user sovereignty."
+  },
+  "home.pillar1.title": { id: "01. Tanpa Hype AI / Tanpa Bloatware", en: "01. No AI Hype / No Bloat" },
+  "home.pillar1.desc": { id: "Kami tidak menempelkan embel-embel 'AI' pada fitur yang sebenarnya hanya butuh kalkulasi matematika presisi dan responsivitas instan.", en: "We do not slap 'AI' stickers on features that simply demand precise calculations and instantaneous responsiveness." },
+  "home.pillar2.title": { id: "02. Kepemilikan Permanen (Lifetime)", en: "02. Perpetual Ownership" },
+  "home.pillar2.desc": { id: "Jika bisnis Anda ingin membeli sekali dan memakai selamanya tanpa tagihan bulanan, kami menyediakan lisensi Lifetime resmi.", en: "If your business prefers to buy once and own forever without recurring bills, we provide official Lifetime Licenses." },
+  "home.pillar3.title": { id: "03. Ketahanan Offline-First", en: "03. Offline-First Resilience" },
+  "home.pillar3.desc": { id: "Koneksi internet bermasalah? Transaksi kasir dan data lokal tetap beroperasi 100% tanpa hambatan.", en: "Internet connection down? Checkout operations and local databases continue working 100% uninterrupted." },
+  "home.pillar4.title": { id: "04. Dukungan Pengembang Langsung", en: "04. Direct Developer Support" },
+  "home.pillar4.desc": { id: "Dukungan teknis langsung dari pembuat software, bukan dari bot chatbot otomatis yang berbelit-belit.", en: "Get direct technical support from the actual software creators, not automated chatbot loops." },
+
+  // How it works
+  "home.how.tag": { id: "Alur Pembelian & Aktivasi", en: "Streamlined Fulfillment" },
+  "home.how.title": { id: "Cara Kerja", en: "How it works" },
+  "home.how.step1.title": { id: "Pilih Software & Plan", en: "Select Software & Plan" },
+  "home.how.step1.desc": { id: "Pilih produk yang sesuai kebutuhan bisnis Anda dan tentukan opsi Monthly untuk fleksibilitas atau Lifetime untuk kepemilikan permanen.", en: "Choose the application that fits your workflow and select Monthly for flexibility or Lifetime for perpetual ownership." },
+  "home.how.step2.title": { id: "Bayar Instan & Aman", en: "Instant & Secure Payment" },
+  "home.how.step2.desc": { id: "Selesaikan pembayaran dalam hitungan detik via QRIS, Virtual Account, atau transfer lokal terverifikasi otomatis melalui webhook.", en: "Complete payment in seconds via QRIS, Virtual Account, or cards, verified automatically via secure webhooks." },
+  "home.how.step3.title": { id: "Akses & Aktivasi License", en: "Instant License & Access" },
+  "home.how.step3.desc": { id: "License Key dan link unduhan installer langsung aktif di portal dashboard Anda seketika tanpa menunggu konfirmasi manual.", en: "Your License Key and installer download links are issued immediately in your customer portal." },
+
+  // FAQ
+  "home.faq.tag": { id: "Tanya Jawab", en: "Questions & Answers" },
+  "home.faq.title": { id: "Pertanyaan yang Sering Diajukan", en: "Frequently Asked Questions" },
+
+  // CTA
+  "home.cta.title": { id: "Siap meningkatkan operasional bisnis Anda?", en: "Ready to upgrade your workflow?" },
+  "home.cta.desc": { id: "Dapatkan software berkualitas tinggi dengan performa tangguh untuk bisnis Anda hari ini.", en: "Get reliable, high-performance software engineered for operational precision today." },
+
+  // About / Manifesto Page
+  "about.tag": { id: "MANIFESTO // FILOSOFI", en: "MANIFESTO // PHILOSOPHY" },
+  "about.title": { id: "Membangun perangkat lunak yang memecahkan friksi operasional nyata.", en: "Crafting tools that solve real operational friction." },
+  "about.intro": { 
+    id: "Vetra Software Studio lahir dari satu observasi sederhana: perangkat lunak bisnis modern semakin hari semakin lambat, rumit, mahal, dan penuh dengan jargon pemasaran yang tidak memberikan dampak riil.",
+    en: "Vetra Software Studio was founded on a simple observation: modern business software has become increasingly sluggish, complicated, expensive, and bloated with marketing buzzwords that deliver zero actual value."
+  },
+  "about.p1.title": { id: "1. Arsitektur Terarah & Berfokus Produk", en: "1. Intentional & Product-First Architecture" },
+  "about.p1.desc": { 
+    id: "Kami tidak membangun platform serba bisa yang mencoba menyelesaikan semua masalah namun lambat di setiap fiturnya. Setiap aplikasi yang kami buat—mulai dari sistem POS kasir hingga manajemen booking lapangan—dibuat dengan cakupan yang terukur secara presisi.",
+    en: "We don't build bloated all-in-one platforms that try to do everything and end up sluggish at each feature. Every tool we create—from retail POS to court bookings—is engineered with a precisely defined scope."
+  },
+  "about.p2.title": { id: "2. Tanpa Sandera Langganan (Opsi Permanen)", en: "2. No Hostage Subscriptions (Perpetual Option)" },
+  "about.p2.desc": { 
+    id: "Kami percaya bahwa pemilik bisnis berhak memilih bagaimana mereka ingin berinvestasi pada perangkat lunak. Oleh karena itu, kami selalu menyediakan opsi Lifetime License resmi: sekali bayar, tanpa tagihan berulang, dan data tersimpan mandiri di perangkat Anda.",
+    en: "We believe business owners deserve the right to choose how they invest in software. We always offer official Lifetime Licenses: buy once, zero recurring bills, and full control over your local data."
+  },
+  "about.p3.title": { id: "3. Ketahanan Offline & Local-First", en: "3. Local-First & Offline Resilience" },
+  "about.p3.desc": { 
+    id: "Koneksi internet di dunia nyata tidak selalu 100% stabil. Software kasir dan operasional lokal kami tidak boleh berhenti bekerja hanya karena sinyal provider terputus. Filosofi local-first memastikan transaksi Anda tetap berjalan cepat dan aman setiap saat.",
+    en: "Real-world internet connections fluctuate. Point of sale and operational software must never freeze when connectivity drops. Our local-first architecture ensures your transactions run instantly and securely at all times."
+  },
+  "about.p4.title": { id: "4. Rekayasa Jujur, Nol Bloatware Buatan", en: "4. Honest Engineering, Zero Artificial Bloat" },
+  "about.p4.desc": { 
+    id: "Kami menghindari gimmick AI yang tidak dibutuhkan hanya demi menaikkan harga. Setiap baris kode yang ditulis di Vetra bertujuan memaksimalkan efisiensi eksekusi dan keandalan sistem harian Anda.",
+    en: "We avoid artificial AI gimmicks slapped onto software simply to inflate price tags. Every line of code written at Vetra aims to maximize execution speed and daily system reliability."
+  },
+  "about.ctaTitle": { id: "Siap merasakan software independen?", en: "Ready to experience independent software?" },
+  "about.ctaDesc": { id: "Jelajahi lini produk kami dan temukan software yang tepat untuk bisnis Anda hari ini.", en: "Explore our software catalog and find the exact tool built for your business today." },
+  "about.ctaBtn": { id: "Jelajahi Katalog Produk →", en: "Explore Products Catalog →" },
+
+  // Catalog Page
+  "catalog.tag": { id: "Katalog Software Vetra", en: "Vetra Software Catalog" },
+  "catalog.title": { id: "Daftar Aplikasi yang Tersedia", en: "Available Software Applications" },
+  "catalog.desc": { id: "Semua software dirancang secara mandiri, dioptimalkan untuk performa tinggi, dan dilengkapi lisensi permanen Lifetime maupun langganan Monthly.", en: "All software is independently crafted, optimized for high performance, and available via Lifetime or Monthly plans." },
+  "catalog.search": { id: "Cari software...", en: "Search software..." },
+  "catalog.allCat": { id: "Semua Kategori", en: "All Categories" },
+  "catalog.notFound": { id: "Tidak ada produk yang ditemukan", en: "No products found" },
+
+  // Product Detail Page
+  "product.backToCatalog": { id: "Kembali ke Katalog Software", en: "Back to Software Catalog" },
+  "product.overview": { id: "Ringkasan Harga", en: "Pricing Overview" },
+  "product.viewPlans": { id: "Pilih Paket & Beli Lisensi", en: "View Plans & Buy License" },
+  "product.screenshotsTitle": { id: "Tampilan & Antarmuka Aplikasi", en: "Software Interface & Screenshots" },
+  "product.screenshotsTag": { id: "Antarmuka & Tangkapan Layar", en: "Software Interface & Screenshots" },
+  "product.features": { id: "Fitur & Arsitektur Utama", en: "Core Features & Architecture" },
+  "product.featuresTag": { id: "Kemampuan Rekayasa", en: "Engineered Capabilities" },
+  "product.useCases": { id: "Skenario Penggunaan Sasaran", en: "Target Use Cases" },
+  "product.useCasesDesc": { id: "Dirancang dan diuji secara khusus untuk skenario bisnis berikut:", en: "Specifically engineered and verified for the following business workflows:" },
+  "product.specs": { id: "Spesifikasi Sistem & Teknis", en: "System & Technical Specifications" },
+  "product.faqTitle": { id: "Pertanyaan seputar", en: "Frequently Asked Questions about" },
+
+  // Pricing Selector
+  "pricingSelector.title": { id: "Pilih Skema Lisensi", en: "Choose Deployment & License" },
+  "pricingSelector.subtitle": { id: "Transparan, tanpa biaya tersembunyi, dan tanpa vendor lock-in.", en: "Transparent, no hidden fees, zero vendor lock-in." },
+  "pricingSelector.lifetime": { id: "Lifetime License", en: "Lifetime License" },
+  "pricingSelector.monthly": { id: "Monthly Subscription", en: "Monthly Subscription" },
+  "pricingSelector.lifetimeBadge": { id: "Sekali Bayar • Akses Permanen", en: "One-Time Payment • Perpetual Access" },
+  "pricingSelector.monthlyBadge": { id: "Tagihan Bulanan • Batal Kapan Saja", en: "Recurring Monthly • Cancel Anytime" },
+  "pricingSelector.lifetimeDesc": { id: "Bayar sekali, miliki selamanya untuk bisnis Anda. Termasuk perbaikan bug, patch keamanan, dan lisensi aktivasi.", en: "Pay once, own forever for your business. Includes bug fixes, security patches, and activation keys." },
+  "pricingSelector.monthlyDesc": { id: "Fleksibilitas biaya bulanan dengan otomatisasi cloud backup dan pembaruan fitur versi terbaru secara berkala.", en: "Flexible monthly billing with automated cloud sync and continuous updates." },
+  "pricingSelector.ctaLifetime": { id: "Dapatkan Lifetime License", en: "Get Lifetime License" },
+  "pricingSelector.ctaMonthly": { id: "Mulai Langganan Monthly", en: "Start Monthly Subscription" },
+  "pricingSelector.buyLifetime": { id: "Dapatkan Lifetime License", en: "Get Lifetime License" },
+  "pricingSelector.buyMonthly": { id: "Mulai Langganan Monthly", en: "Start Monthly Subscription" },
+  "pricingSelector.featuresTitle": { id: "Hak & Fitur yang Termasuk", en: "Entitlements & Included In This Plan" },
+  "pricingSelector.included": { id: "Hak & Fitur yang Termasuk", en: "Entitlements & Included In This Plan" },
+
+  // Pricing Page
+  "pricingPage.tag": { id: "Harga Transparan", en: "Simple & Direct Pricing" },
+  "pricingPage.title": { id: "Dua Cara Pembelian yang Jelas", en: "Two Transparent Ways to Buy" },
+  "pricingPage.desc": { id: "Pilih paket Monthly Subscription untuk biaya awal fleksibel dengan cloud sync, atau Lifetime License untuk kepemilikan permanen tanpa biaya bulanan selamanya.", en: "Choose Monthly Subscription for flexible initial cost with cloud sync, or Lifetime License for permanent ownership without recurring fees." },
+  "pricingPage.tableTitle": { id: "Tabel Perbandingan Lisensi", en: "Licensing Model Comparison" },
+  "pricingPage.colFeature": { id: "Fitur / Keuntungan", en: "Feature / Benefit" },
+  "pricingPage.colMonthly": { id: "Monthly Subscription", en: "Monthly Subscription" },
+  "pricingPage.colLifetime": { id: "Lifetime License", en: "Lifetime License" },
+  "pricingPage.row1": { id: "Akses Penuh Software", en: "Full Software Access" },
+  "pricingPage.row1M": { id: "✓ Aktif selama masa langganan", en: "✓ Active during subscription" },
+  "pricingPage.row1L": { id: "✓ Permanen Seumur Hidup", en: "✓ Perpetual Lifetime Access" },
+  "pricingPage.row2": { id: "Skema Pembayaran", en: "Payment Model" },
+  "pricingPage.row2M": { id: "Tagihan berkala per bulan", en: "Recurring monthly billing" },
+  "pricingPage.row2L": { id: "1x Bayar (One-time)", en: "One-Time Payment" },
+  "pricingPage.row3": { id: "Perbaikan Bug & Security Patch", en: "Bug Fixes & Security Patches" },
+  "pricingPage.row3M": { id: "✓ Termasuk", en: "✓ Included" },
+  "pricingPage.row3L": { id: "✓ Termasuk siklus v1.x", en: "✓ Included for v1.x cycle" },
+  "pricingPage.row4": { id: "Operasional Offline 100%", en: "100% Offline Operations" },
+  "pricingPage.row5": { id: "Database Penyimpanan", en: "Data Storage" },
+  "pricingPage.row5M": { id: "Cloud Sync Otomatis", en: "Automated Cloud Sync" },
+  "pricingPage.row5L": { id: "Database Lokal Mandiri", en: "Standalone Local Database" },
+  "pricingPage.row6": { id: "Dukungan Teknis Pengembang", en: "Direct Developer Support" },
+  "pricingPage.row6M": { id: "✓ Email & Portal Support", en: "✓ Email & Portal Support" },
+  "pricingPage.row6L": { id: "✓ Prioritas Langsung", en: "✓ Direct Priority Support" },
+  "pricingPage.productListTitle": { id: "Daftar Tarif Software Satuan", en: "Individual Software Pricing Table" },
+
+  // Auth Pages
+  "auth.signInTitle": { id: "Masuk ke Portal Vetra", en: "Sign In to Vetra Portal" },
+  "auth.signInDesc": { id: "Akses software, unduh installer, dan kelola lisensi Anda.", en: "Access software, download installers, and manage your licenses." },
+  "auth.registerTitle": { id: "Buat Akun Customer", en: "Create Customer Account" },
+  "auth.registerDesc": { id: "Daftarkan akun untuk mengelola lisensi software dan invoice.", en: "Register to manage your software licenses and invoices." },
+  "auth.forgotTitle": { id: "Atur Ulang Kata Sandi", en: "Reset Password" },
+  "auth.forgotDesc": { id: "Masukkan alamat email Anda untuk menerima tautan pemulihan kata sandi.", en: "Enter your email address to receive password reset instructions." },
+  "auth.fullName": { id: "Nama Lengkap / Nama Bisnis", en: "Full Name / Business Name" },
+  "auth.email": { id: "Alamat Email", en: "Email Address" },
+  "auth.password": { id: "Kata Sandi", en: "Password" },
+  "auth.forgotLink": { id: "Lupa password?", en: "Forgot password?" },
+  "auth.noAccount": { id: "Belum memiliki akun?", en: "Don't have an account?" },
+  "auth.haveAccount": { id: "Sudah memiliki akun?", en: "Already have an account?" },
+  "auth.backToSignIn": { id: "Kembali ke Halaman Masuk", en: "Back to Sign In" },
+
+  // Checkout Page
+  "checkout.secureCheckout": { id: "CHECKOUT AMAN", en: "SECURE CHECKOUT" },
+  "checkout.productDetail": { id: "Detail Produk", en: "Product Detail" },
+  "checkout.buyerData": { id: "1. Data Pembeli", en: "1. Customer Information" },
+  "checkout.buyerDesc": { id: "License key dan link aktivasi akan dikirimkan ke email ini.", en: "License keys and activation links will be delivered to this email." },
+  "checkout.fullNameLabel": { id: "Nama Lengkap / Bisnis *", en: "Full Name / Business Name *" },
+  "checkout.fullNamePlaceholder": { id: "e.g. John Doe / Studio Kopi", en: "e.g. John Doe / Studio Coffee" },
+  "checkout.emailLabel": { id: "Alamat Email *", en: "Email Address *" },
+  "checkout.emailPlaceholder": { id: "nama@bisnis.com", en: "name@business.com" },
+  "checkout.paymentMethod": { id: "2. Metode Pembayaran", en: "2. Payment Method" },
+  "checkout.qrisTitle": { id: "QRIS Instan", en: "Instant QRIS" },
+  "checkout.qrisSubtitle": { id: "BCA, GoPay, OVO, Dana, ShopeePay", en: "BCA, GoPay, OVO, Dana, ShopeePay" },
+  "checkout.vaTitle": { id: "Virtual Account", en: "Virtual Account" },
+  "checkout.vaSubtitle": { id: "BCA, Mandiri, BNI, BRI", en: "BCA, Mandiri, BNI, BRI" },
+  "checkout.cardTitle": { id: "Debit / Kartu", en: "Debit / Credit Card" },
+  "checkout.cardSubtitle": { id: "Visa, Mastercard, JCB", en: "Visa, Mastercard, JCB" },
+  "checkout.summary": { id: "Ringkasan Pesanan", en: "Order Summary" },
+  "checkout.selectedPlan": { id: "Paket Dipilih", en: "Selected Plan" },
+  "checkout.switchPlan": { id: "Ganti Paket", en: "Switch Plan" },
+  "checkout.price": { id: "Harga Software", en: "Software Price" },
+  "checkout.adminFee": { id: "Biaya Admin Gateway", en: "Gateway Admin Fee" },
+  "checkout.adminFeeFree": { id: "Rp0 (Gratis)", en: "IDR 0 (Free)" },
+  "checkout.vat": { id: "PPN (11%)", en: "VAT (11%)" },
+  "checkout.vatIncluded": { id: "Termasuk", en: "Included" },
+  "checkout.total": { id: "Total Pembayaran", en: "Total Amount" },
+  "checkout.proceed": { id: "Lanjutkan ke Pembayaran →", en: "Proceed to Payment →" },
+  "checkout.processing": { id: "Memproses Checkout...", en: "Processing Checkout..." },
+  "checkout.disclaimer": { id: "Dengan melanjutkan, Anda menyetujui Ketentuan Layanan & Kebijakan Lisensi Vetra.", en: "By proceeding, you agree to Vetra's Terms of Service & License Policy." },
+  "checkout.waitingPayment": { id: "Menunggu Pembayaran", en: "Awaiting Payment" },
+  "checkout.scanQris": { id: "Scan QRIS untuk Membayar", en: "Scan QRIS to Complete Payment" },
+  "checkout.scanQrisDesc": { id: "Buka aplikasi m-Banking atau e-Wallet favorit Anda.", en: "Open your preferred mobile banking or e-wallet app." },
+  "checkout.qrisStandard": { id: "QRIS STANDAR PEMBAYARAN NASIONAL", en: "QRIS NATIONAL PAYMENT STANDARD" },
+  "checkout.totalNominal": { id: "Total Tagihan", en: "Total Amount Due" },
+  "checkout.recipient": { id: "Penerima: VETRA SOFTWARE STUDIO", en: "Recipient: VETRA SOFTWARE STUDIO" },
+  "checkout.simulateSuccess": { id: "✓ Simulasikan Bayar Sukses (Sandbox)", en: "✓ Simulate Successful Payment (Sandbox)" },
+  "checkout.verifyingWebhook": { id: "Memverifikasi Webhook Gateway...", en: "Verifying Gateway Webhook..." },
+  "checkout.changeMethod": { id: "← Ganti Metode Pembayaran", en: "← Change Payment Method" },
+  "checkout.successTitle": { id: "Pembayaran Berhasil Terverifikasi!", en: "Payment Successfully Verified!" },
+  "checkout.successOrder": { id: "Order", en: "Order" },
+  "checkout.successDesc": { id: "telah lunas. Lisensi resmi Anda telah diterbitkan.", en: "is settled. Your official license key has been generated." },
+  "checkout.licenseLabel": { id: "LICENSE KEY RESMI", en: "OFFICIAL LICENSE KEY" },
+  "checkout.statusActive": { id: "STATUS: AKTIF", en: "STATUS: ACTIVE" },
+  "checkout.copyLicense": { id: "Salin", en: "Copy" },
+  "checkout.copied": { id: "Tersalin!", en: "Copied!" },
+  "checkout.activationNote": { id: "Salin lisensi ini dan gunakan saat aktivasi pertama pada software", en: "Copy this key and use it upon initial activation on" },
+  "checkout.openDashboard": { id: "Buka Customer Dashboard & Download Installer", en: "Open Customer Dashboard & Download Installer" },
+  "checkout.backToStore": { id: "Kembali ke Beranda Store", en: "Back to Store Home" },
+  "checkout.notFoundTitle": { id: "Produk Tidak Ditemukan", en: "Product Not Found" },
+  "checkout.notFoundDesc": { id: "Produk atau paket yang Anda pilih tidak tersedia dalam katalog.", en: "The selected product or plan is not available in the catalog." },
+  "checkout.backToCatalog": { id: "Kembali ke Katalog", en: "Back to Catalog" },
+
+  // Customer Dashboard
+  "dash.overview": { id: "Ringkasan", en: "Overview" },
+  "dash.myProducts": { id: "Software Saya", en: "My Software" },
+  "dash.licenses": { id: "Kelola Lisensi", en: "Licenses" },
+  "dash.subscriptions": { id: "Langganan Bulanan", en: "Subscriptions" },
+  "dash.purchases": { id: "Riwayat Pembelian", en: "Purchase History" },
+  "dash.downloads": { id: "Unduhan & Rilis", en: "Downloads & Releases" },
+  "dash.account": { id: "Pengaturan Akun", en: "Account Settings" },
+  "dash.signOut": { id: "Keluar (Sign Out)", en: "Sign Out" },
+  "dash.adminSwitch": { id: "Menu Admin", en: "Admin Switch" },
+
+  // Admin Panel
+  "admin.overview": { id: "Ringkasan Admin", en: "Admin Overview" },
+  "admin.products": { id: "Produk & Paket", en: "Products & Plans" },
+  "admin.orders": { id: "Pesanan & Pembayaran", en: "Orders & Payments" },
+  "admin.licenses": { id: "Audit Lisensi", en: "Licenses Audit" },
+  "admin.releases": { id: "Rilis & Installer", en: "Releases & Binaries" },
+  "admin.operator": { id: "HAK AKSES OPERATOR", en: "OPERATOR PRIVILEGED" },
+
+  // Footer
+  "footer.motto": { id: "Kami merancang dan membangun software independen berkinerja tinggi untuk operasional bisnis nyata. Tanpa hype AI, tanpa bloatware berlebih.", en: "We design and craft independent, high-performance software for real business operations. No AI hype, no unnecessary bloatware." },
+  "footer.status": { id: "Sistem Gateway & Server Lisensi: Beroperasi Normal", en: "Payment Gateways & License Servers: Operational" },
+  "footer.rights": { id: "Vetra Software Studio. Dibangun untuk keandalan produksi.", en: "Vetra Software Studio. Crafted for production reliability." },
+  "footer.terms": { id: "Ketentuan Layanan", en: "Terms of Service" },
+  "footer.privacy": { id: "Kebijakan Privasi", en: "Privacy Policy" },
+  "footer.refund": { id: "Kebijakan Refund & Lisensi", en: "Refund & Lifetime Policy" },
+};
