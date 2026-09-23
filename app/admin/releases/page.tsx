@@ -3,8 +3,10 @@
 import * as React from "react";
 import { UploadCloud, Plus, FileText, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/language-context";
 
 export default function AdminReleasesPage() {
+  const { t, lang } = useLanguage();
   const [releases, setReleases] = React.useState([
     { id: "1", product: "TOKOin-POS", version: "2.1.0", date: "2026-09-22", platform: "Web Cloud / Windows / macOS", active: true },
     { id: "2", product: "Brew & Bite", version: "2.4.0", date: "2026-09-22", platform: "Web Cloud / Android KDS / Windows POS", active: true },
@@ -14,18 +16,22 @@ export default function AdminReleasesPage() {
   ]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-mono">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#181c25] pb-4">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-white">Releases & Binary Uploads</h1>
+          <h1 className="text-xl font-bold tracking-tight text-white font-sans">
+            {lang === "id" ? "Rilis & Pengunggahan Binary" : "Releases & Binary Uploads"}
+          </h1>
           <p className="text-xs text-neutral-400">
-            Unggah file installer baru, atur nomor versi, dan publikasikan changelog resmi.
+            {lang === "id"
+              ? "Unggah file installer baru, atur nomor versi, dan publikasikan changelog resmi."
+              : "Upload binary installers, set release versions, and publish official changelogs."}
           </p>
         </div>
 
-        <Button size="sm" className="gap-1.5 text-xs font-semibold" onClick={() => alert("Modal Upload New Release Binary")}>
+        <Button size="sm" className="gap-1.5 text-xs font-semibold cursor-pointer" onClick={() => alert(lang === "id" ? "Modal Unggah Binary Rilis Baru" : "Upload New Release Binary Modal")}>
           <Plus className="w-3.5 h-3.5" />
-          <span>Publish New Release</span>
+          <span>{lang === "id" ? "Publikasikan Rilis Baru" : "Publish New Release"}</span>
         </Button>
       </div>
 
@@ -35,17 +41,17 @@ export default function AdminReleasesPage() {
             <thead>
               <tr className="border-b border-[#181c25] bg-[#11141c] text-neutral-400 font-mono">
                 <th className="p-4">Software</th>
-                <th className="p-4">Version</th>
-                <th className="p-4">Platforms</th>
-                <th className="p-4">Release Date</th>
+                <th className="p-4">{lang === "id" ? "Versi" : "Version"}</th>
+                <th className="p-4">{lang === "id" ? "Platform Target" : "Platforms"}</th>
+                <th className="p-4">{lang === "id" ? "Tanggal Rilis" : "Release Date"}</th>
                 <th className="p-4">Status</th>
-                <th className="p-4 text-right">Action</th>
+                <th className="p-4 text-right">{lang === "id" ? "Aksi" : "Action"}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#181c25] text-neutral-300">
               {releases.map((rel) => (
                 <tr key={rel.id} className="hover:bg-[#11131a]">
-                  <td className="p-4 font-bold text-white">{rel.product}</td>
+                  <td className="p-4 font-bold text-white font-sans">{rel.product}</td>
                   <td className="p-4 font-mono text-emerald-400">v{rel.version}</td>
                   <td className="p-4 text-neutral-300">{rel.platform}</td>
                   <td className="p-4 font-mono text-neutral-400">{rel.date}</td>
@@ -55,8 +61,8 @@ export default function AdminReleasesPage() {
                     </span>
                   </td>
                   <td className="p-4 text-right">
-                    <Button variant="secondary" size="sm" className="text-xs" onClick={() => alert(`Edit release notes v${rel.version}`)}>
-                      Edit Notes
+                    <Button variant="secondary" size="sm" className="text-xs cursor-pointer" onClick={() => alert(lang === "id" ? `Edit catatan rilis v${rel.version}` : `Edit release notes v${rel.version}`)}>
+                      {lang === "id" ? "Edit Catatan" : "Edit Notes"}
                     </Button>
                   </td>
                 </tr>
@@ -68,3 +74,4 @@ export default function AdminReleasesPage() {
     </div>
   );
 }
+

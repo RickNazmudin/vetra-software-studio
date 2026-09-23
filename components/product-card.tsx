@@ -36,7 +36,9 @@ export function ProductCard({ product }: ProductCardProps) {
           {/* On Air / Category Badge */}
           <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5">
             <span className="text-[8.5px] font-bold uppercase tracking-[0.18em] bg-[#FF6B6B] text-[#12141A] px-2 py-0.5">
-              {product.badge || "MODULE ON AIR"}
+              {product.badge 
+                ? (lang === "id" && product.badge === "Bestseller" ? "Terlaris" : product.badge) 
+                : (lang === "id" ? "MODUL AKTIF" : "MODULE ON AIR")}
             </span>
           </div>
 
@@ -56,7 +58,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="p-5 sm:p-6 pb-2">
           {/* Index Number in Coral Accent */}
           <div className="text-[10px] tracking-[0.2em] uppercase text-[#FF6B6B] font-mono mb-2">
-            STATION // {product.category}
+            {lang === "id" ? "STASIUN // " : "STATION // "}{product.category}
           </div>
 
           {/* Title */}

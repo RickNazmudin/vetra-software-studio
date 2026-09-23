@@ -12,31 +12,34 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { formatIDR } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
 
 export default function AdminOverviewPage() {
+  const { t, lang } = useLanguage();
+
   const metrics = [
-    { title: "Total Revenue", value: "Rp48.920.000", change: "+18.4%", icon: DollarSign },
-    { title: "Paid Orders", value: "38", change: "+4 this week", icon: ShoppingBag },
-    { title: "Active Licenses", value: "38", change: "100% Validated", icon: Key },
-    { title: "Registered Customers", value: "42", change: "+6 this month", icon: Users },
+    { title: lang === "id" ? "Total Pendapatan" : "Total Revenue", value: "Rp48.920.000", change: "+18.4%", icon: DollarSign },
+    { title: lang === "id" ? "Pesanan Terbayar" : "Paid Orders", value: "38", change: lang === "id" ? "+4 minggu ini" : "+4 this week", icon: ShoppingBag },
+    { title: lang === "id" ? "Lisensi Aktif" : "Active Licenses", value: "38", change: lang === "id" ? "100% Tervalidasi" : "100% Validated", icon: Key },
+    { title: lang === "id" ? "Pengguna Terdaftar" : "Registered Customers", value: "42", change: lang === "id" ? "+6 bulan ini" : "+6 this month", icon: Users },
   ];
 
   const recentOrders = [
-    { id: "ORD-20260922-101", customer: "retail.nusantara@gmail.com", product: "TOKOin-POS", plan: "Lifetime License", amount: 8900000, status: "PAID", time: "15 mins ago" },
-    { id: "ORD-20260922-100", customer: "cafe.senja@bisnis.id", product: "TOKOin-POS", plan: "Monthly Subscription", amount: 399000, status: "PAID", time: "2 hours ago" },
-    { id: "ORD-20260921-099", customer: "butik.cantika@yahoo.com", product: "TOKOin-POS", plan: "Lifetime License", amount: 8900000, status: "PAID", time: "Yesterday" },
-    { id: "ORD-20260920-098", customer: "minimarket.barokah@gmail.com", product: "TOKOin-POS", plan: "Lifetime License", amount: 8900000, status: "PAID", time: "2 days ago" },
+    { id: "ORD-20260922-101", customer: "retail.nusantara@gmail.com", product: "TOKOin-POS", plan: "Lifetime License", amount: 8900000, status: "PAID", time: lang === "id" ? "15 menit lalu" : "15 mins ago" },
+    { id: "ORD-20260922-100", customer: "cafe.senja@bisnis.id", product: "TOKOin-POS", plan: "Monthly Subscription", amount: 399000, status: "PAID", time: lang === "id" ? "2 jam lalu" : "2 hours ago" },
+    { id: "ORD-20260921-099", customer: "butik.cantika@yahoo.com", product: "TOKOin-POS", plan: "Lifetime License", amount: 8900000, status: "PAID", time: lang === "id" ? "Kemarin" : "Yesterday" },
+    { id: "ORD-20260920-098", customer: "minimarket.barokah@gmail.com", product: "TOKOin-POS", plan: "Lifetime License", amount: 8900000, status: "PAID", time: lang === "id" ? "2 hari lalu" : "2 days ago" },
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 font-mono">
       {/* Top Header */}
       <div className="border-b border-[#181c25] pb-6">
         <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest block mb-1">
-          Vetra Studio Command Center
+          {t("admin.title")}
         </span>
-        <h1 className="text-2xl font-bold tracking-tight text-white">
-          Admin Dashboard Overview
+        <h1 className="text-2xl font-bold tracking-tight text-white font-sans">
+          {t("admin.overviewTitle")}
         </h1>
       </div>
 
@@ -67,10 +70,10 @@ export default function AdminOverviewPage() {
       <div className="rounded-[8px] border border-[#1e2433] bg-[#0c0e14] overflow-hidden">
         <div className="p-4 bg-[#11141c] border-b border-[#1b202c] flex items-center justify-between">
           <h3 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-            Live Payment Transactions
+            {lang === "id" ? "Transaksi Pembayaran Langsung" : "Live Payment Transactions"}
           </h3>
           <Link href="/admin/orders" className="text-xs text-neutral-400 hover:text-white">
-            View all orders →
+            {lang === "id" ? "Lihat semua pesanan →" : "View all orders →"}
           </Link>
         </div>
 
@@ -79,12 +82,12 @@ export default function AdminOverviewPage() {
             <thead>
               <tr className="border-b border-[#181c25] bg-[#0e1016] text-neutral-400 font-mono">
                 <th className="p-4">Order ID</th>
-                <th className="p-4">Customer</th>
+                <th className="p-4">{lang === "id" ? "Pelanggan" : "Customer"}</th>
                 <th className="p-4">Software</th>
-                <th className="p-4">Plan</th>
-                <th className="p-4">Amount</th>
+                <th className="p-4">{lang === "id" ? "Paket" : "Plan"}</th>
+                <th className="p-4">{lang === "id" ? "Nominal" : "Amount"}</th>
                 <th className="p-4">Status</th>
-                <th className="p-4 text-right">Time</th>
+                <th className="p-4 text-right">{lang === "id" ? "Waktu" : "Time"}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#181c25] text-neutral-300">
@@ -114,3 +117,4 @@ export default function AdminOverviewPage() {
     </div>
   );
 }
+

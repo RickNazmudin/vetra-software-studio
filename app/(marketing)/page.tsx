@@ -15,19 +15,39 @@ export default function HomePage() {
   const [activeHop, setActiveHop] = React.useState<number>(0);
 
   const signalLegs = [
-    { title: "STUDIO CORE, JAKARTA", a: ["1,411", "Days on air"], b: ["100%", "Offline Capable"], c: ["0", "Adverts Served"] },
-    { title: "LOCAL RUNTIME ENGINE", a: ["SQLite / Embedded", "Data Store"], b: ["< 1.2ms", "Query Latency"], c: ["256-bit", "Local Encryption"] },
-    { title: "PERPETUAL KEY MESH", a: ["Lifetime", "License Protocol"], b: ["Instant", "Webhook Dispatch"], c: ["Zero", "Cloud Hostage"] },
-    { title: "YOUR BUSINESS SYSTEM", a: ["100%", "Hardware Autonomy"], b: ["0", "Recurring Traps"], c: ["∞", "Perpetual Value"] },
+    {
+      title: lang === "id" ? "PUSAT STUDIO, JAKARTA" : "STUDIO CORE, JAKARTA",
+      a: [lang === "id" ? "1.411" : "1,411", lang === "id" ? "Hari Beroperasi" : "Days on air"],
+      b: ["100%", lang === "id" ? "Kemampuan Offline" : "Offline Capable"],
+      c: ["0", lang === "id" ? "Iklan Dilayani" : "Adverts Served"]
+    },
+    {
+      title: lang === "id" ? "MESIN RUNTIME LOKAL" : "LOCAL RUNTIME ENGINE",
+      a: ["SQLite / Embedded", lang === "id" ? "Penyimpanan Data" : "Data Store"],
+      b: ["< 1.2ms", lang === "id" ? "Latensi Kueri" : "Query Latency"],
+      c: ["256-bit", lang === "id" ? "Enkripsi Lokal" : "Local Encryption"]
+    },
+    {
+      title: lang === "id" ? "JARINGAN LISENSI PERMANEN" : "PERPETUAL KEY MESH",
+      a: ["Lifetime", lang === "id" ? "Protokol Lisensi" : "License Protocol"],
+      b: ["Instant", lang === "id" ? "Pengiriman Webhook" : "Webhook Dispatch"],
+      c: ["Zero", lang === "id" ? "Sandera Cloud" : "Cloud Hostage"]
+    },
+    {
+      title: lang === "id" ? "SISTEM BISNIS ANDA" : "YOUR BUSINESS SYSTEM",
+      a: ["100%", lang === "id" ? "Otonomi Perangkat" : "Hardware Autonomy"],
+      b: ["0", lang === "id" ? "Jebakan Biaya Rutin" : "Recurring Traps"],
+      c: ["∞", lang === "id" ? "Nilai Permanen" : "Perpetual Value"]
+    },
   ];
 
   const currentLeg = signalLegs[activeHop];
 
   const scheduleSlots = [
-    { time: "08:00", name: "POS Core Engine v2.4", type: "Retail & Multi-Outlet", status: "Operational", active: false },
-    { time: "12:00", name: "F&B Table & Kitchen Router", type: "Cafe & Hospitality", status: "On air", active: true },
-    { time: "16:00", name: "Booking Grid & Court Matrix", type: "Padel & Sports Venues", status: "Operational", active: false },
-    { time: "20:00", name: "Local License Dispatcher", type: "Perpetual Key Gen", status: "Active", active: false },
+    { time: "08:00", name: "POS Core Engine v2.4", type: lang === "id" ? "Ritel & Multi-Outlet" : "Retail & Multi-Outlet", status: lang === "id" ? "Operasional" : "Operational", active: false },
+    { time: "12:00", name: "F&B Table & Kitchen Router", type: lang === "id" ? "Kafe & Hospitality" : "Cafe & Hospitality", status: lang === "id" ? "Aktif Live" : "On air", active: true },
+    { time: "16:00", name: "Booking Grid & Court Matrix", type: lang === "id" ? "Padel & Arena Olahraga" : "Padel & Sports Venues", status: lang === "id" ? "Operasional" : "Operational", active: false },
+    { time: "20:00", name: "Local License Dispatcher", type: lang === "id" ? "Penerbitan Key Permanen" : "Perpetual Key Gen", status: lang === "id" ? "Aktif" : "Active", active: false },
   ];
 
   return (
@@ -47,20 +67,31 @@ export default function HomePage() {
               VETRA SOFTWARE STUDIO
             </b>
             <span className="mi block text-[10px] tracking-[0.2em] text-[var(--mid)]">
-              Focused software · Perpetual licenses · 24/7 standalone
+              {t("hero.tagline")}
             </span>
           </div>
 
           <h1 className="font-sans font-bold text-4xl sm:text-6xl lg:text-7xl uppercase leading-[0.96] tracking-[-0.02em] text-[#12141A]">
-            Software built<br />for real business<br />operations.
+            {lang === "id" ? (
+              <>
+                Software yang dibangun<br />
+                untuk bisnis nyata.
+              </>
+            ) : (
+              <>
+                Software built<br />
+                for real business<br />
+                operations.
+              </>
+            )}
           </h1>
 
           <div className="flex flex-wrap gap-4 text-[10px] tracking-[0.2em] uppercase text-[var(--mid)]">
-            <span>NO SAAS HOSTAGE</span>
+            <span>{t("hero.pill1")}</span>
             <span>·</span>
-            <span>OFFLINE-FIRST</span>
+            <span>{t("hero.pill2")}</span>
             <span>·</span>
-            <span>LIFETIME OWNERSHIP</span>
+            <span>{t("hero.pill3")}</span>
           </div>
 
           {/* Embedded Nullwave Tactile Waveform Player Bar */}
@@ -134,7 +165,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-6 border-b border-[rgba(244,245,246,0.16)]">
             <div>
               <span className="text-[10px] tracking-[0.2em] uppercase text-[#FF6B6B] block mb-1 font-mono">
-                // CATALOG // FIVE ACTIVE STATIONS
+                {t("telemetry.catalogTag")}
               </span>
               <h2 className="font-sans font-bold text-3xl sm:text-5xl uppercase tracking-tight text-[#F4F5F6]">
                 {t("home.catalog.title")}
@@ -250,7 +281,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5 space-y-4">
             <span className="text-[10px] tracking-[0.2em] uppercase text-[#FF6B6B] block font-mono">
-              // ARCHITECTURE // HARDWARE CHAIN
+              {t("telemetry.archTag")}
             </span>
             <h2 className="font-sans font-bold text-3xl sm:text-5xl uppercase leading-[0.98] text-[#F4F5F6]">
               {t("home.why.title")}

@@ -13,7 +13,14 @@ export const translations: Record<string, { id: string; en: string }> = {
 
   // Hero Section
   "hero.badge": { id: "VETRA SOFTWARE STUDIO — SIAP PRODUKSI", en: "VETRA SOFTWARE STUDIO — PRODUCTION READY" },
+  "hero.tagline": { id: "Software fokus · Lisensi permanen · Berjalan mandiri 24/7", en: "Focused software · Perpetual licenses · 24/7 standalone" },
   "hero.title": { id: "Software yang dibangun untuk bisnis nyata.", en: "Software built for real business operations." },
+  "hero.titleLine1": { id: "Software yang dibangun", en: "Software built" },
+  "hero.titleLine2": { id: "untuk bisnis nyata.", en: "for real business" },
+  "hero.titleLine3": { id: "", en: "operations." },
+  "hero.pill1": { id: "BEBAS VENDOR LOCK-IN", en: "NO SAAS HOSTAGE" },
+  "hero.pill2": { id: "KETAHANAN OFFLINE", en: "OFFLINE-FIRST" },
+  "hero.pill3": { id: "KEPEMILIKAN PERMANEN", en: "LIFETIME OWNERSHIP" },
   "hero.subtitle": { 
     id: "Software fokus, mandiri, dan berkinerja tinggi yang dirancang untuk menyelesaikan friksi operasional sehari-hari. Tersedia dengan lisensi permanen Lifetime atau langganan bulanan.",
     en: "Focused, independent, and high-performance software engineered to solve real operational friction. Available with permanent Lifetime licenses or monthly plans."
@@ -34,6 +41,9 @@ export const translations: Record<string, { id: string; en: string }> = {
   "telemetry.sub": { id: "Runtime berkesinambungan · Spesifikasi IDR & Global", en: "Continuous runtime · IDR & Global specs" },
   "telemetry.direct": { id: "Telemetri langsung, tanpa perantara.", en: "Direct telemetry, zero middleman." },
   "telemetry.directDesc": { id: "Software kami berkomunikasi langsung ke database lokal Anda tanpa ketergantungan server perantara yang lambat.", en: "Our software communicates directly to your local database without sluggish third-party intermediary dependencies." },
+  "telemetry.hop": { id: "HOP", en: "HOP" },
+  "telemetry.catalogTag": { id: "// KATALOG // LIMA STASIUN AKTIF", en: "// CATALOG // FIVE ACTIVE STATIONS" },
+  "telemetry.archTag": { id: "// ARSITEKTUR // RANTAI PERANGKAT", en: "// ARCHITECTURE // HARDWARE CHAIN" },
 
   // Catalog Section on Homepage
   "home.catalog.tag": { id: "Aplikasi yang Tersedia", en: "Available Applications" },
@@ -51,8 +61,8 @@ export const translations: Record<string, { id: string; en: string }> = {
     id: "Kami membangun software yang berfokus pada pekerjaan spesifik: kasir ritel, booking lapangan olahraga, dan penagihan invoice. Cepat, stabil, dan menghormati kendali pengguna.",
     en: "We build software focused on specific jobs: retail POS, sports booking, and invoicing. Fast, resilient, and respecting user sovereignty."
   },
-  "home.pillar1.title": { id: "01. Tanpa Hype AI / Tanpa Bloatware", en: "01. No AI Hype / No Bloat" },
-  "home.pillar1.desc": { id: "Kami tidak menempelkan embel-embel 'AI' pada fitur yang sebenarnya hanya butuh kalkulasi matematika presisi dan responsivitas instan.", en: "We do not slap 'AI' stickers on features that simply demand precise calculations and instantaneous responsiveness." },
+  "home.pillar1.title": { id: "01. Tanpa Gimmick AI / Tanpa Bloatware", en: "01. No AI Hype / No Bloat" },
+  "home.pillar1.desc": { id: "Kami tidak menempelkan embel-embel 'AI' pada fitur yang sebenarnya hanya butuh kalkulasi presisi dan responsivitas instan.", en: "We do not slap 'AI' stickers on features that simply demand precise calculations and instantaneous responsiveness." },
   "home.pillar2.title": { id: "02. Kepemilikan Permanen (Lifetime)", en: "02. Perpetual Ownership" },
   "home.pillar2.desc": { id: "Jika bisnis Anda ingin membeli sekali dan memakai selamanya tanpa tagihan bulanan, kami menyediakan lisensi Lifetime resmi.", en: "If your business prefers to buy once and own forever without recurring bills, we provide official Lifetime Licenses." },
   "home.pillar3.title": { id: "03. Ketahanan Offline-First", en: "03. Offline-First Resilience" },
@@ -115,6 +125,9 @@ export const translations: Record<string, { id: string; en: string }> = {
   "catalog.desc": { id: "Semua software dirancang secara mandiri, dioptimalkan untuk performa tinggi, dan dilengkapi lisensi permanen Lifetime maupun langganan Monthly.", en: "All software is independently crafted, optimized for high performance, and available via Lifetime or Monthly plans." },
   "catalog.search": { id: "Cari software...", en: "Search software..." },
   "catalog.allCat": { id: "Semua Kategori", en: "All Categories" },
+  "catalog.catRetail": { id: "Retail & Perhotelan", en: "Retail & Hospitality" },
+  "catalog.catSports": { id: "Olahraga & Venue", en: "Sports & Venues" },
+  "catalog.catFinance": { id: "Keuangan & Produktivitas", en: "Finance & Productivity" },
   "catalog.notFound": { id: "Tidak ada produk yang ditemukan", en: "No products found" },
 
   // Product Detail Page
@@ -248,6 +261,32 @@ export const translations: Record<string, { id: string; en: string }> = {
   "dash.account": { id: "Pengaturan Akun", en: "Account Settings" },
   "dash.signOut": { id: "Keluar (Sign Out)", en: "Sign Out" },
   "dash.adminSwitch": { id: "Menu Admin", en: "Admin Switch" },
+  "dash.welcomeTitle": { id: "Ringkasan Software & Lisensi", en: "Software & Licenses Overview" },
+  "dash.exploreMore": { id: "Jelajahi Software Lainnya", en: "Explore More Software" },
+  "dash.activeEntitlement": { id: "Hak Akses Aktif", en: "Active Entitlement" },
+  "dash.prodKey": { id: "Kunci Lisensi Produksi", en: "Production License Key" },
+  "dash.downloadInstaller": { id: "Unduh Installer", en: "Download Installer" },
+  "dash.totalOwned": { id: "Total Software Dimiliki", en: "Total Software Owned" },
+  "dash.activeLicCount": { id: "Lisensi Aktif", en: "Active Licenses" },
+  "dash.activeSubsCount": { id: "Langganan Aktif", en: "Active Subscriptions" },
+  "dash.recentPurchases": { id: "Riwayat Pembelian & Faktur", en: "Recent Purchases & Invoices" },
+  "dash.viewAll": { id: "Lihat semua →", en: "View all →" },
+
+  // Dashboard Subpages
+  "dash.licTitle": { id: "Manajemen Kunci Lisensi", en: "License Key Management" },
+  "dash.licDesc": { id: "Kunci lisensi resmi untuk mengaktifkan instalasi software desktop dan server Anda.", en: "Official license keys to activate your desktop and server software installations." },
+  "dash.subsTitle": { id: "Langganan Bulanan", en: "Monthly Subscriptions" },
+  "dash.subsDesc": { id: "Kelola paket langganan bulanan aktif dan status penagihan otomatis.", en: "Manage active monthly subscriptions and recurring billing status." },
+  "dash.noSubs": { id: "Tidak Ada Langganan Bulanan Aktif", en: "No Active Monthly Subscriptions" },
+  "dash.noSubsDesc": { id: "Saat ini semua lisensi software yang Anda miliki adalah Lifetime License tanpa biaya bulanan berulang.", en: "All your software licenses are currently Lifetime Licenses with zero recurring monthly fees." },
+  "dash.downloadsTitle": { id: "Pusat Unduhan & Rilis Binary", en: "Downloads & Binary Releases" },
+  "dash.downloadsDesc": { id: "Akses build produksi, installer native desktop, dan file sumber resmi yang terverifikasi.", en: "Access verified production builds, native desktop installers, and official sources." },
+  "dash.purchasesTitle": { id: "Riwayat Pembelian & Faktur", en: "Purchase History & Invoices" },
+  "dash.purchasesDesc": { id: "Riwayat transaksi pembayaran resmi dan faktur digital untuk pembukuan bisnis Anda.", en: "Official payment transaction records and digital invoices for your business bookkeeping." },
+  "dash.mySoftwareTitle": { id: "Software Saya", en: "My Software" },
+  "dash.mySoftwareDesc": { id: "Daftar seluruh aplikasi yang Anda miliki dengan akses unduh dan lisensi.", en: "All applications in your workspace with downloads and license access." },
+  "dash.accountTitle": { id: "Pengaturan Akun", en: "Account Settings" },
+  "dash.accountDesc": { id: "Informasi profil pemilik akun dan pengaturan keamanan portal.", en: "Account owner profile information and portal security settings." },
 
   // Admin Panel
   "admin.overview": { id: "Ringkasan Admin", en: "Admin Overview" },
@@ -256,6 +295,8 @@ export const translations: Record<string, { id: string; en: string }> = {
   "admin.licenses": { id: "Audit Lisensi", en: "Licenses Audit" },
   "admin.releases": { id: "Rilis & Installer", en: "Releases & Binaries" },
   "admin.operator": { id: "HAK AKSES OPERATOR", en: "OPERATOR PRIVILEGED" },
+  "admin.title": { id: "Pusat Komando Vetra Studio", en: "Vetra Studio Command Center" },
+  "admin.overviewTitle": { id: "Ringkasan Dasbor Admin", en: "Admin Dashboard Overview" },
 
   // Footer
   "footer.motto": { id: "Kami merancang dan membangun software independen berkinerja tinggi untuk operasional bisnis nyata. Tanpa hype AI, tanpa bloatware berlebih.", en: "We design and craft independent, high-performance software for real business operations. No AI hype, no unnecessary bloatware." },
@@ -265,3 +306,4 @@ export const translations: Record<string, { id: string; en: string }> = {
   "footer.privacy": { id: "Kebijakan Privasi", en: "Privacy Policy" },
   "footer.refund": { id: "Kebijakan Refund & Lisensi", en: "Refund & Lifetime Policy" },
 };
+

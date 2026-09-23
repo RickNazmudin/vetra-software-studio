@@ -4,8 +4,10 @@ import * as React from "react";
 import Link from "next/link";
 import { Package, DownloadCloud, ExternalLink, KeyRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/language-context";
 
 export default function MyProductsPage() {
+  const { t, lang } = useLanguage();
   const [orders, setOrders] = React.useState<any[]>([]);
 
   React.useEffect(() => {
@@ -27,11 +29,11 @@ export default function MyProductsPage() {
   }, []);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-mono">
       <div className="border-b border-[#181c25] pb-4">
-        <h1 className="text-xl font-bold tracking-tight text-white">My Software</h1>
+        <h1 className="text-xl font-bold tracking-tight text-white font-sans">{t("dash.mySoftwareTitle")}</h1>
         <p className="text-xs text-neutral-400">
-          Daftar seluruh aplikasi yang Anda miliki dengan akses unduh dan lisensi.
+          {t("dash.mySoftwareDesc")}
         </p>
       </div>
 
@@ -43,9 +45,9 @@ export default function MyProductsPage() {
           >
             <div className="flex items-start justify-between gap-3">
               <div>
-                <h3 className="text-base font-bold text-white">{item.productName}</h3>
+                <h3 className="text-base font-bold text-white font-sans">{item.productName}</h3>
                 <span className="text-xs font-mono text-neutral-400">
-                  Plan: {item.planType || "LIFETIME"} • v{item.version || "1.0.0"}
+                  {lang === "id" ? "Paket" : "Plan"}: {item.planType || "LIFETIME"} • v{item.version || "1.0.0"}
                 </span>
               </div>
               <span className="px-2 py-0.5 rounded-[3px] bg-emerald-950/60 text-emerald-400 border border-emerald-800/40 text-[10px] font-mono font-bold uppercase shrink-0">
@@ -62,13 +64,13 @@ export default function MyProductsPage() {
 
             <div className="pt-2 flex items-center gap-2">
               <Link href="/dashboard/downloads" className="flex-1">
-                <Button size="sm" className="w-full text-xs gap-1.5">
+                <Button size="sm" className="w-full text-xs gap-1.5 cursor-pointer">
                   <DownloadCloud className="w-3.5 h-3.5" />
-                  <span>Download Installer</span>
+                  <span>{t("dash.downloadInstaller")}</span>
                 </Button>
               </Link>
-              <Link href={`/products/${item.productSlug || "pos-pro"}`}>
-                <Button variant="outline" size="sm" className="text-xs">
+              <Link href={`/products/${item.productSlug || "tokoin-pos"}`}>
+                <Button variant="outline" size="sm" className="text-xs cursor-pointer">
                   <ExternalLink className="w-3.5 h-3.5" />
                 </Button>
               </Link>
@@ -79,3 +81,4 @@ export default function MyProductsPage() {
     </div>
   );
 }
+

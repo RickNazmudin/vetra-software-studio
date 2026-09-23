@@ -3,8 +3,10 @@
 import * as React from "react";
 import { KeyRound, Copy, Check, ShieldCheck, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/language-context";
 
 export default function LicensesPage() {
+  const { t, lang } = useLanguage();
   const [copiedKey, setCopiedKey] = React.useState<string | null>(null);
   const [licenses, setLicenses] = React.useState<any[]>([]);
 
@@ -17,7 +19,7 @@ export default function LicensesPage() {
           licenseKey: "VETRA-TOKO-9921-8842",
           type: "LIFETIME",
           status: "ACTIVE",
-          activations: "1 / 3 Terminal Kasir Terdaftar",
+          activations: lang === "id" ? "1 / 3 Terminal Kasir Terdaftar" : "1 / 3 Cashier Terminals Registered",
           date: "2026-09-22",
         },
       ]);
@@ -28,12 +30,12 @@ export default function LicensesPage() {
           licenseKey: s.licenseKey,
           type: s.planType || "LIFETIME",
           status: "ACTIVE",
-          activations: "1 / 2 Perangkat Terdaftar",
+          activations: lang === "id" ? "1 / 2 Perangkat Terdaftar" : "1 / 2 Devices Registered",
           date: s.date ? new Date(s.date).toISOString().split("T")[0] : "2026-09-22",
         }))
       );
     }
-  }, []);
+  }, [lang]);
 
   function copyToClipboard(key: string) {
     navigator.clipboard.writeText(key);
@@ -42,11 +44,11 @@ export default function LicensesPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-mono">
       <div className="border-b border-[#181c25] pb-4">
-        <h1 className="text-xl font-bold tracking-tight text-white">License Management</h1>
+        <h1 className="text-xl font-bold tracking-tight text-white font-sans">{t("dash.licTitle")}</h1>
         <p className="text-xs text-neutral-400">
-          Kunci lisensi resmi untuk mengaktifkan instalasi software desktop dan server Anda.
+          {t("dash.licDesc")}
         </p>
       </div>
 
@@ -59,7 +61,7 @@ export default function LicensesPage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <KeyRound className="w-4 h-4 text-emerald-400" />
-                <h3 className="text-sm font-bold text-white">{lic.productName}</h3>
+                <h3 className="text-sm font-bold text-white font-sans">{lic.productName}</h3>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-[3px] bg-neutral-800 text-neutral-300">
@@ -77,17 +79,17 @@ export default function LicensesPage() {
               </code>
               <button
                 onClick={() => copyToClipboard(lic.licenseKey)}
-                className="flex items-center gap-1 text-xs text-neutral-400 hover:text-white transition-colors"
+                className="flex items-center gap-1 text-xs text-neutral-400 hover:text-white transition-colors cursor-pointer"
               >
                 {copiedKey === lic.licenseKey ? (
                   <>
                     <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-emerald-400 text-xs">Copied</span>
+                    <span className="text-emerald-400 text-xs">{lang === "id" ? "Tersalin" : "Copied"}</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-3.5 h-3.5" />
-                    <span className="text-xs">Copy Key</span>
+                    <span className="text-xs">{lang === "id" ? "Salin Key" : "Copy Key"}</span>
                   </>
                 )}
               </button>
@@ -95,7 +97,7 @@ export default function LicensesPage() {
 
             <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-neutral-400 font-mono pt-1">
               <span>{lic.activations}</span>
-              <span>Diterbitkan: {lic.date}</span>
+              <span>{lang === "id" ? "Diterbitkan: " : "Issued: "}{lic.date}</span>
             </div>
           </div>
         ))}

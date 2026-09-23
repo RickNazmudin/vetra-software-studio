@@ -14,9 +14,9 @@ export default function ProductsPage() {
 
   const categories = [
     { key: "ALL", label: t("catalog.allCat") },
-    { key: "Retail & Hospitality", label: "Retail & Hospitality" },
-    { key: "Sports & Venues", label: "Sports & Venues" },
-    { key: "Finance & Productivity", label: "Finance & Productivity" },
+    { key: "Retail & Hospitality", label: t("catalog.catRetail") },
+    { key: "Sports & Venues", label: t("catalog.catSports") },
+    { key: "Finance & Productivity", label: t("catalog.catFinance") },
   ];
 
   const filteredProducts = allProducts.filter((product) => {

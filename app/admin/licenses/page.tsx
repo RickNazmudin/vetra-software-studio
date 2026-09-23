@@ -3,8 +3,10 @@
 import * as React from "react";
 import { Key, ShieldAlert, CheckCircle2, Ban } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/language-context";
 
 export default function AdminLicensesPage() {
+  const { t, lang } = useLanguage();
   const [licenses, setLicenses] = React.useState([
     { id: "lic-1", key: "VETRA-TOKO-9921-8842", customer: "retail.nusantara@gmail.com", product: "TOKOin-POS", type: "LIFETIME", status: "ACTIVE" },
     { id: "lic-2", key: "VETRA-TOKO-7741-2290", customer: "cafe.senja@bisnis.id", product: "TOKOin-POS", type: "SUBSCRIPTION", status: "ACTIVE" },
@@ -24,11 +26,15 @@ export default function AdminLicensesPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-mono">
       <div className="border-b border-[#181c25] pb-4">
-        <h1 className="text-xl font-bold tracking-tight text-white">License Key Auditor</h1>
+        <h1 className="text-xl font-bold tracking-tight text-white font-sans">
+          {lang === "id" ? "Audit Kunci Lisensi" : "License Key Auditor"}
+        </h1>
         <p className="text-xs text-neutral-400">
-          Kelola integritas lisensi, suspend lisensi bermasalah, atau verifikasi status aktivasi.
+          {lang === "id"
+            ? "Kelola integritas lisensi, suspend lisensi bermasalah, atau verifikasi status aktivasi."
+            : "Audit license integrity, suspend abusive license keys, and verify activations."}
         </p>
       </div>
 
@@ -38,11 +44,11 @@ export default function AdminLicensesPage() {
             <thead>
               <tr className="border-b border-[#181c25] bg-[#11141c] text-neutral-400 font-mono">
                 <th className="p-4">License Key</th>
-                <th className="p-4">Customer Email</th>
+                <th className="p-4">{lang === "id" ? "Email Pengguna" : "Customer Email"}</th>
                 <th className="p-4">Software</th>
-                <th className="p-4">Type</th>
+                <th className="p-4">{lang === "id" ? "Tipe" : "Type"}</th>
                 <th className="p-4">Status</th>
-                <th className="p-4 text-right">Actions</th>
+                <th className="p-4 text-right">{lang === "id" ? "Aksi" : "Actions"}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#181c25] text-neutral-300">
@@ -68,9 +74,11 @@ export default function AdminLicensesPage() {
                       variant={lic.status === "ACTIVE" ? "danger" : "outline"}
                       size="sm"
                       onClick={() => toggleStatus(lic.id)}
-                      className="text-xs"
+                      className="text-xs cursor-pointer"
                     >
-                      {lic.status === "ACTIVE" ? "Suspend License" : "Reactivate"}
+                      {lic.status === "ACTIVE" 
+                        ? (lang === "id" ? "Bekukan Lisensi" : "Suspend License") 
+                        : (lang === "id" ? "Aktifkan Kembali" : "Reactivate")}
                     </Button>
                   </td>
                 </tr>
@@ -82,3 +90,4 @@ export default function AdminLicensesPage() {
     </div>
   );
 }
+

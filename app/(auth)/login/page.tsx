@@ -6,10 +6,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Lock, Mail, ArrowRight, AlertCircle, Loader2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/language-context";
 
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { t, lang } = useLanguage();
   const redirectTo = searchParams.get("redirectTo") || "/dashboard";
 
   const [email, setEmail] = React.useState("");
@@ -31,7 +33,7 @@ function LoginForm() {
 
       if (error) {
         if (error.message.includes("Invalid login credentials")) {
-          setErrorMsg("Email atau password yang Anda masukkan salah.");
+          setErrorMsg(lang === "id" ? "Email atau password yang Anda masukkan salah." : "Invalid email or password entered.");
         } else if (error.message.includes("FetchError") || error.message.includes("Failed to fetch")) {
           localStorage.setItem("vetra_mock_session", JSON.stringify({ email, role: "CUSTOMER" }));
           router.push(redirectTo);
@@ -65,13 +67,13 @@ function LoginForm() {
   }
 
   return (
-    <div className="rounded-[8px] border border-[#212634] bg-[#0e1016] p-6 sm:p-8 shadow-xl">
+    <div className="rounded-[8px] border border-[#212634] bg-[#0e1016] p-6 sm:p-8 shadow-xl font-mono">
       <div className="mb-6 space-y-1">
-        <h1 className="text-xl font-bold tracking-tight text-white">
-          Sign In to Vetra Portal
+        <h1 className="text-xl font-bold tracking-tight text-white font-sans">
+          {t("auth.signInTitle")}
         </h1>
         <p className="text-xs text-neutral-400">
-          Akses software, unduh installer, dan kelola lisensi Anda.
+          {t("auth.signInDesc")}
         </p>
       </div>
 
@@ -85,7 +87,7 @@ function LoginForm() {
       <form onSubmit={handleLogin} className="space-y-4">
         <div className="space-y-1.5">
           <label className="text-xs font-mono text-neutral-300 block">
-            Email Address
+            {t("auth.email")}
           </label>
           <div className="relative">
             <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
@@ -103,13 +105,13 @@ function LoginForm() {
         <div className="space-y-1.5">
           <div className="flex items-center justify-between">
             <label className="text-xs font-mono text-neutral-300 block">
-              Password
+              {t("auth.password")}
             </label>
             <Link
               href="/forgot-password"
               className="text-[11px] text-neutral-400 hover:text-white transition-colors"
             >
-              Lupa password?
+              {t("auth.forgotLink")}
             </Link>
           </div>
           <div className="relative">
@@ -129,16 +131,16 @@ function LoginForm() {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full gap-2 text-xs font-semibold py-2.5"
+            className="w-full gap-2 text-xs font-semibold py-2.5 cursor-pointer"
           >
             {loading ? (
               <>
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                <span>Authenticating...</span>
+                <span>{lang === "id" ? "Memverifikasi..." : "Authenticating..."}</span>
               </>
             ) : (
               <>
-                <span>Sign In</span>
+                <span>{t("nav.signIn")}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </>
             )}
@@ -147,12 +149,12 @@ function LoginForm() {
       </form>
 
       <div className="mt-6 border-t border-[#1b202c] pt-4 text-center text-xs text-neutral-400">
-        Belum memiliki akun?{" "}
+        {t("auth.noAccount")}{" "}
         <Link
           href={`/register${redirectTo ? `?redirectTo=${encodeURIComponent(redirectTo)}` : ""}`}
           className="font-medium text-white hover:underline"
         >
-          Buat Akun Customer
+          {t("auth.registerTitle")}
         </Link>
       </div>
     </div>
@@ -163,8 +165,8 @@ export default function LoginPage() {
   return (
     <React.Suspense
       fallback={
-        <div className="rounded-[8px] border border-[#212634] bg-[#0e1016] p-8 text-center text-xs text-neutral-400">
-          Memuat formulir...
+        <div className="rounded-[8px] border border-[#212634] bg-[#0e1016] p-8 text-center text-xs text-neutral-400 font-mono">
+          Loading form...
         </div>
       }
     >
@@ -172,3 +174,4 @@ export default function LoginPage() {
     </React.Suspense>
   );
 }
+

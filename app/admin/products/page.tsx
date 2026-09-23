@@ -6,23 +6,29 @@ import { Plus, Edit, Eye, CheckCircle2 } from "lucide-react";
 import { getAllProducts } from "@/lib/products-data";
 import { formatIDR } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/language-context";
 
 export default function AdminProductsPage() {
+  const { t, lang } = useLanguage();
   const products = getAllProducts();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-mono">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#181c25] pb-4">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-white">Product & Plan Catalog</h1>
+          <h1 className="text-xl font-bold tracking-tight text-white font-sans">
+            {lang === "id" ? "Katalog Produk & Paket Lisensi" : "Product & Plan Catalog"}
+          </h1>
           <p className="text-xs text-neutral-400">
-            Kelola software, harga paket Monthly/Lifetime, dan status publikasi.
+            {lang === "id"
+              ? "Kelola software, harga paket Monthly/Lifetime, dan status publikasi."
+              : "Manage software apps, Monthly/Lifetime pricing plans, and published status."}
           </p>
         </div>
 
-        <Button size="sm" className="gap-1.5 text-xs font-semibold" onClick={() => alert("Modal New Product Studio")}>
+        <Button size="sm" className="gap-1.5 text-xs font-semibold cursor-pointer" onClick={() => alert(lang === "id" ? "Modal Tambah Produk Baru Studio" : "New Studio Product Modal")}>
           <Plus className="w-3.5 h-3.5" />
-          <span>Add New Product</span>
+          <span>{lang === "id" ? "Tambah Produk Baru" : "Add New Product"}</span>
         </Button>
       </div>
 
@@ -48,7 +54,7 @@ export default function AdminProductsPage() {
                 )}
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-base font-bold text-white">{p.name}</h3>
+                    <h3 className="text-base font-bold text-white font-sans">{p.name}</h3>
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-[3px] bg-neutral-800 text-neutral-300">
                       v{p.version}
                     </span>
@@ -68,14 +74,14 @@ export default function AdminProductsPage() {
 
               <div className="flex items-center gap-2">
                 <Link href={`/products/${p.slug}`}>
-                  <Button variant="outline" size="sm" className="gap-1 text-xs">
+                  <Button variant="outline" size="sm" className="gap-1 text-xs cursor-pointer">
                     <Eye className="w-3.5 h-3.5" />
-                    <span>View Store</span>
+                    <span>{lang === "id" ? "Lihat di Store" : "View Store"}</span>
                   </Button>
                 </Link>
-                <Button variant="secondary" size="sm" className="gap-1 text-xs" onClick={() => alert(`Edit produk: ${p.name}`)}>
+                <Button variant="secondary" size="sm" className="gap-1 text-xs cursor-pointer" onClick={() => alert(lang === "id" ? `Edit produk: ${p.name}` : `Edit product: ${p.name}`)}>
                   <Edit className="w-3.5 h-3.5" />
-                  <span>Edit Product</span>
+                  <span>{lang === "id" ? "Edit Produk" : "Edit Product"}</span>
                 </Button>
               </div>
             </div>
@@ -85,3 +91,4 @@ export default function AdminProductsPage() {
     </div>
   );
 }
+

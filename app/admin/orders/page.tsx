@@ -3,8 +3,10 @@
 import * as React from "react";
 import { ShoppingBag, Search, Filter } from "lucide-react";
 import { formatIDR, formatDate } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
 
 export default function AdminOrdersPage() {
+  const { t, lang } = useLanguage();
   const [filterStatus, setFilterStatus] = React.useState("ALL");
   const [search, setSearch] = React.useState("");
 
@@ -16,11 +18,15 @@ export default function AdminOrdersPage() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-mono">
       <div className="border-b border-[#181c25] pb-4">
-        <h1 className="text-xl font-bold tracking-tight text-white">Orders & Transactions</h1>
+        <h1 className="text-xl font-bold tracking-tight text-white font-sans">
+          {lang === "id" ? "Pesanan & Riwayat Transaksi" : "Orders & Transactions"}
+        </h1>
         <p className="text-xs text-neutral-400">
-          Semua transaksi pesanan masuk dari payment gateway terverifikasi.
+          {lang === "id"
+            ? "Semua transaksi pesanan masuk dari payment gateway terverifikasi."
+            : "All incoming order transactions verified via payment gateway webhooks."}
         </p>
       </div>
 
@@ -30,10 +36,10 @@ export default function AdminOrdersPage() {
             <thead>
               <tr className="border-b border-[#181c25] bg-[#11141c] text-neutral-400 font-mono">
                 <th className="p-4">Order ID</th>
-                <th className="p-4">Customer</th>
-                <th className="p-4">Product & Plan</th>
-                <th className="p-4">Nominal</th>
-                <th className="p-4">Tanggal</th>
+                <th className="p-4">{lang === "id" ? "Pelanggan" : "Customer"}</th>
+                <th className="p-4">{lang === "id" ? "Produk & Paket" : "Product & Plan"}</th>
+                <th className="p-4">{lang === "id" ? "Nominal" : "Amount"}</th>
+                <th className="p-4">{lang === "id" ? "Tanggal" : "Date"}</th>
                 <th className="p-4">Status</th>
               </tr>
             </thead>
@@ -43,7 +49,7 @@ export default function AdminOrdersPage() {
                   <td className="p-4 font-mono font-bold text-white">#{ord.id}</td>
                   <td className="p-4 text-neutral-200">{ord.customer}</td>
                   <td className="p-4">
-                    <span className="font-bold text-white block">{ord.product}</span>
+                    <span className="font-bold text-white block font-sans">{ord.product}</span>
                     <span className="text-[11px] text-neutral-400 font-mono">{ord.plan}</span>
                   </td>
                   <td className="p-4 font-mono font-bold text-white">
@@ -64,3 +70,4 @@ export default function AdminOrdersPage() {
     </div>
   );
 }
+

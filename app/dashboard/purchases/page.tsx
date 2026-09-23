@@ -4,8 +4,10 @@ import * as React from "react";
 import { Receipt, Download, CheckCircle2, ExternalLink } from "lucide-react";
 import { formatIDR, formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/language-context";
 
 export default function PurchasesPage() {
+  const { t, lang } = useLanguage();
   const [orders, setOrders] = React.useState<any[]>([]);
 
   React.useEffect(() => {
@@ -28,11 +30,11 @@ export default function PurchasesPage() {
   }, []);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-mono">
       <div className="border-b border-[#181c25] pb-4">
-        <h1 className="text-xl font-bold tracking-tight text-white">Purchase History & Invoices</h1>
+        <h1 className="text-xl font-bold tracking-tight text-white font-sans">{t("dash.purchasesTitle")}</h1>
         <p className="text-xs text-neutral-400">
-          Riwayat transaksi pembayaran resmi dan faktur digital untuk pembukuan bisnis Anda.
+          {t("dash.purchasesDesc")}
         </p>
       </div>
 
@@ -41,11 +43,11 @@ export default function PurchasesPage() {
           <table className="w-full text-left text-xs">
             <thead>
               <tr className="border-b border-[#181c25] bg-[#11141c] text-neutral-400 font-mono">
-                <th className="p-4">Order Number</th>
-                <th className="p-4">Software & Plan</th>
-                <th className="p-4">Tanggal</th>
-                <th className="p-4">Metode</th>
-                <th className="p-4">Nominal</th>
+                <th className="p-4">{lang === "id" ? "Nomor Pesanan" : "Order Number"}</th>
+                <th className="p-4">{lang === "id" ? "Software & Paket" : "Software & Plan"}</th>
+                <th className="p-4">{lang === "id" ? "Tanggal" : "Date"}</th>
+                <th className="p-4">{lang === "id" ? "Metode" : "Method"}</th>
+                <th className="p-4">{lang === "id" ? "Nominal" : "Amount"}</th>
                 <th className="p-4">Status</th>
                 <th className="p-4 text-right">Invoice</th>
               </tr>
@@ -76,8 +78,8 @@ export default function PurchasesPage() {
                   </td>
                   <td className="p-4 text-right">
                     <button
-                      onClick={() => alert(`Mengunduh PDF Invoice untuk pesanan #${ord.orderNumber}`)}
-                      className="text-xs font-mono text-neutral-400 hover:text-white inline-flex items-center gap-1"
+                      onClick={() => alert(lang === "id" ? `Mengunduh PDF Invoice untuk pesanan #${ord.orderNumber}` : `Downloading PDF Invoice for order #${ord.orderNumber}`)}
+                      className="text-xs font-mono text-neutral-400 hover:text-white inline-flex items-center gap-1 cursor-pointer"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>PDF</span>
@@ -92,3 +94,4 @@ export default function PurchasesPage() {
     </div>
   );
 }
+
