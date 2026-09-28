@@ -98,7 +98,7 @@ export const PRODUCTS: ExtendedProduct[] = [
         product_id: "10000000-0000-4000-8000-000000000001",
         name: "Lifetime License",
         type: "LIFETIME",
-        price: 8900000,
+        price: 5900000,
         currency: "IDR",
         billing_interval: null,
         features: [
