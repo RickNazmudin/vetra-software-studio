@@ -210,12 +210,10 @@ export const translations: Record<string, { id: string; en: string }> = {
   "checkout.emailLabel": { id: "Alamat Email *", en: "Email Address *" },
   "checkout.emailPlaceholder": { id: "nama@bisnis.com", en: "name@business.com" },
   "checkout.paymentMethod": { id: "2. Metode Pembayaran", en: "2. Payment Method" },
-  "checkout.qrisTitle": { id: "QRIS Instan", en: "Instant QRIS" },
-  "checkout.qrisSubtitle": { id: "BCA, GoPay, OVO, Dana, ShopeePay", en: "BCA, GoPay, OVO, Dana, ShopeePay" },
-  "checkout.vaTitle": { id: "Virtual Account", en: "Virtual Account" },
-  "checkout.vaSubtitle": { id: "BCA, Mandiri, BNI, BRI", en: "BCA, Mandiri, BNI, BRI" },
-  "checkout.cardTitle": { id: "Debit / Kartu", en: "Debit / Credit Card" },
-  "checkout.cardSubtitle": { id: "Visa, Mastercard, JCB", en: "Visa, Mastercard, JCB" },
+  "checkout.qrisIdTitle": { id: "Pembayaran Umum", en: "General Payment" },
+  "checkout.qrisIdSubtitle": { id: "QRIS Instan · Verifikasi otomatis real-time via semua Bank & E-Wallet", en: "Instant QRIS · Real-time auto verification via all Banks & E-Wallets" },
+  "checkout.qrisDanaTitle": { id: "Pembayaran Member", en: "Member Payment" },
+  "checkout.qrisDanaSubtitle": { id: "QRIS Khusus Member · Konfirmasi & aktivasi prioritas via WhatsApp Support", en: "Dedicated Member QRIS · Priority confirmation & activation via WhatsApp Support" },
   "checkout.summary": { id: "Ringkasan Pesanan", en: "Order Summary" },
   "checkout.selectedPlan": { id: "Paket Dipilih", en: "Selected Plan" },
   "checkout.switchPlan": { id: "Ganti Paket", en: "Switch Plan" },
@@ -234,6 +232,10 @@ export const translations: Record<string, { id: string; en: string }> = {
   "checkout.qrisStandard": { id: "QRIS STANDAR PEMBAYARAN NASIONAL", en: "QRIS NATIONAL PAYMENT STANDARD" },
   "checkout.totalNominal": { id: "Total Tagihan", en: "Total Amount Due" },
   "checkout.recipient": { id: "Penerima: VETRA SOFTWARE STUDIO", en: "Recipient: VETRA SOFTWARE STUDIO" },
+  "checkout.danaMerchantLabel": { id: "LAYANAN VERIFIKASI MEMBER RESMI", en: "OFFICIAL MEMBER VERIFICATION SERVICE" },
+  "checkout.danaNmidLabel": { id: "NMID: ID1026512051867", en: "NMID: ID1026512051867" },
+  "checkout.waConfirmBtn": { id: "Konfirmasi ke WhatsApp Support →", en: "Confirm via WhatsApp Support →" },
+  "checkout.waConfirmSub": { id: "WhatsApp Support: 089617257030", en: "WhatsApp Support: +62 896-1725-7030" },
   "checkout.simulateSuccess": { id: "✓ Simulasikan Bayar Sukses (Sandbox)", en: "✓ Simulate Successful Payment (Sandbox)" },
   "checkout.verifyingWebhook": { id: "Memverifikasi Webhook Gateway...", en: "Verifying Gateway Webhook..." },
   "checkout.changeMethod": { id: "← Ganti Metode Pembayaran", en: "← Change Payment Method" },
@@ -297,6 +299,17 @@ export const translations: Record<string, { id: string; en: string }> = {
   "admin.operator": { id: "HAK AKSES OPERATOR", en: "OPERATOR PRIVILEGED" },
   "admin.title": { id: "Pusat Komando Vetra Studio", en: "Vetra Studio Command Center" },
   "admin.overviewTitle": { id: "Ringkasan Dasbor Admin", en: "Admin Dashboard Overview" },
+
+  // Testimonials Section
+  "testimonials.tag": { id: "// AUDIT & REPUTASI // SUARA PENGGUNA", en: "// AUDIT & REPUTATION // CLIENT VOICES" },
+  "testimonials.title": { id: "Dipercaya Pengusaha & Tim Operasional", en: "Trusted by Operators & Business Founders" },
+  "testimonials.subtitle": { 
+    id: "Cerita nyata dari pemilik toko, pengelola cafe, manajer venue olahraga, dan brand studio yang mengandalkan ekosistem software Vetra setiap hari.",
+    en: "Real experiences from store owners, cafe operators, sports venue managers, and brand studios running daily operations on Vetra software."
+  },
+  "testimonials.verified": { id: "PENGGUNA TERVERIFIKASI", en: "VERIFIED OPERATOR" },
+  "testimonials.all": { id: "Semua Ulasan", en: "All Reviews" },
+  "testimonials.stats": { id: "99.8% Kepuasan Klien · Rating Rata-rata 5.0/5.0", en: "99.8% Satisfaction Rate · Average Rating 5.0/5.0" },
 
   // Footer
   "footer.motto": { id: "Kami merancang dan membangun software independen berkinerja tinggi untuk operasional bisnis nyata. Tanpa hype AI, tanpa bloatware berlebih.", en: "We design and craft independent, high-performance software for real business operations. No AI hype, no unnecessary bloatware." },

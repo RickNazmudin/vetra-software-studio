@@ -6,6 +6,7 @@ import { ArrowRight, ShieldCheck, Cpu, HardDrive, Zap, Radio, Check } from "luci
 import { getAllProducts } from "@/lib/products-data";
 import { ProductCard } from "@/components/product-card";
 import { SignalVisualizer } from "@/components/signal-visualizer";
+import { TestimonialsSection } from "@/components/testimonials-section";
 import { useLanguage } from "@/context/language-context";
 
 export default function HomePage() {
@@ -332,6 +333,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── TESTIMONIALS / CLIENT VOICES SECTION ───────────────── */}
+      <TestimonialsSection />
 
       {/* ── SUPPORT / FINAL CTA ──────────────────────────────────── */}
       <section className="py-20 sm:py-28 px-4 sm:px-8 lg:px-12 text-center bg-[#F4F5F6]">

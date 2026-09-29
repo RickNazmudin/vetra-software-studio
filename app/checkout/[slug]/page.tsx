@@ -2,12 +2,11 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams, useSearchParams, useRouter } from "next/navigation";
 import {
   ShieldCheck,
   QrCode,
-  CreditCard,
-  Building2,
   CheckCircle2,
   ArrowRight,
   Copy,
@@ -19,6 +18,8 @@ import {
   RefreshCw,
   Sparkles,
   Zap,
+  MessageSquare,
+  Users,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { getProductBySlug } from "@/lib/products-data";
@@ -66,7 +67,7 @@ function CheckoutContent() {
 
   const [customerEmail, setCustomerEmail] = React.useState("");
   const [customerName, setCustomerName] = React.useState("");
-  const [paymentMethod, setPaymentMethod] = React.useState<"QRIS" | "VA" | "CARD">("QRIS");
+  const [paymentMethod, setPaymentMethod] = React.useState<"QRIS_ID" | "QRIS_DANA">("QRIS_ID");
   
   const [stage, setStage] = React.useState<"FORM" | "PAYING" | "SUCCESS">("FORM");
   const [loading, setLoading] = React.useState(false);
@@ -273,73 +274,58 @@ function CheckoutContent() {
                   </h2>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* OPTION 1: PEMBAYARAN UMUM */}
                   <button
                     type="button"
-                    onClick={() => setPaymentMethod("QRIS")}
-                    className={`flex flex-col text-left p-4 border transition-all cursor-pointer relative ${
-                      paymentMethod === "QRIS"
-                        ? "border-[#12141A] bg-[#12141A] text-[#F4F5F6]"
+                    onClick={() => setPaymentMethod("QRIS_ID")}
+                    className={`flex flex-col text-left p-4 sm:p-5 border transition-all cursor-pointer relative ${
+                      paymentMethod === "QRIS_ID"
+                        ? "border-[#12141A] bg-[#12141A] text-[#F4F5F6] shadow-sm"
                         : "border-[var(--line)] bg-[#F4F5F6] text-[#12141A] hover:border-[#12141A]"
                     }`}
                   >
                     <div className="flex items-center justify-between w-full mb-3">
-                      <QrCode className={`w-5 h-5 ${paymentMethod === "QRIS" ? "text-[#FF6B6B]" : "text-[#12141A]"}`} />
-                      {paymentMethod === "QRIS" && (
-                        <span className="text-[9px] font-mono font-bold bg-[#FF6B6B] text-[#12141A] px-1.5 py-0.5">
-                          ACTIVE
+                      <div className="flex items-center gap-2">
+                        <Zap className={`w-5 h-5 ${paymentMethod === "QRIS_ID" ? "text-[#FF6B6B]" : "text-[#12141A]"}`} />
+                        <span className="text-[10px] font-mono tracking-wider uppercase opacity-75">OTOMATIS // INSTAN</span>
+                      </div>
+                      {paymentMethod === "QRIS_ID" && (
+                        <span className="text-[9px] font-mono font-bold bg-[#FF6B6B] text-[#12141A] px-2 py-0.5 uppercase">
+                          AKTIF
                         </span>
                       )}
                     </div>
-                    <span className="text-xs font-bold font-sans uppercase tracking-tight">{t("checkout.qrisTitle")}</span>
-                    <span className={`text-[10px] mt-1 leading-tight ${paymentMethod === "QRIS" ? "text-[rgba(244,245,246,0.7)]" : "text-[var(--mid)]"}`}>
-                      {t("checkout.qrisSubtitle")}
+                    <span className="text-sm font-bold font-sans uppercase tracking-tight">{t("checkout.qrisIdTitle")}</span>
+                    <span className={`text-[11px] mt-1.5 leading-snug ${paymentMethod === "QRIS_ID" ? "text-[rgba(244,245,246,0.75)]" : "text-[var(--mid)]"}`}>
+                      {t("checkout.qrisIdSubtitle")}
                     </span>
                   </button>
 
+                  {/* OPTION 2: PEMBAYARAN MEMBER */}
                   <button
                     type="button"
-                    onClick={() => setPaymentMethod("VA")}
-                    className={`flex flex-col text-left p-4 border transition-all cursor-pointer relative ${
-                      paymentMethod === "VA"
-                        ? "border-[#12141A] bg-[#12141A] text-[#F4F5F6]"
+                    onClick={() => setPaymentMethod("QRIS_DANA")}
+                    className={`flex flex-col text-left p-4 sm:p-5 border transition-all cursor-pointer relative ${
+                      paymentMethod === "QRIS_DANA"
+                        ? "border-[#12141A] bg-[#12141A] text-[#F4F5F6] shadow-sm"
                         : "border-[var(--line)] bg-[#F4F5F6] text-[#12141A] hover:border-[#12141A]"
                     }`}
                   >
                     <div className="flex items-center justify-between w-full mb-3">
-                      <Building2 className={`w-5 h-5 ${paymentMethod === "VA" ? "text-[#FF6B6B]" : "text-[#12141A]"}`} />
-                      {paymentMethod === "VA" && (
-                        <span className="text-[9px] font-mono font-bold bg-[#FF6B6B] text-[#12141A] px-1.5 py-0.5">
-                          ACTIVE
+                      <div className="flex items-center gap-2">
+                        <Users className={`w-5 h-5 ${paymentMethod === "QRIS_DANA" ? "text-[#FF6B6B]" : "text-[#12141A]"}`} />
+                        <span className="text-[10px] font-mono tracking-wider uppercase opacity-75">MEMBER // PRIORITAS</span>
+                      </div>
+                      {paymentMethod === "QRIS_DANA" && (
+                        <span className="text-[9px] font-mono font-bold bg-[#FF6B6B] text-[#12141A] px-2 py-0.5 uppercase">
+                          AKTIF
                         </span>
                       )}
                     </div>
-                    <span className="text-xs font-bold font-sans uppercase tracking-tight">{t("checkout.vaTitle")}</span>
-                    <span className={`text-[10px] mt-1 leading-tight ${paymentMethod === "VA" ? "text-[rgba(244,245,246,0.7)]" : "text-[var(--mid)]"}`}>
-                      {t("checkout.vaSubtitle")}
-                    </span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod("CARD")}
-                    className={`flex flex-col text-left p-4 border transition-all cursor-pointer relative ${
-                      paymentMethod === "CARD"
-                        ? "border-[#12141A] bg-[#12141A] text-[#F4F5F6]"
-                        : "border-[var(--line)] bg-[#F4F5F6] text-[#12141A] hover:border-[#12141A]"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between w-full mb-3">
-                      <CreditCard className={`w-5 h-5 ${paymentMethod === "CARD" ? "text-[#FF6B6B]" : "text-[#12141A]"}`} />
-                      {paymentMethod === "CARD" && (
-                        <span className="text-[9px] font-mono font-bold bg-[#FF6B6B] text-[#12141A] px-1.5 py-0.5">
-                          ACTIVE
-                        </span>
-                      )}
-                    </div>
-                    <span className="text-xs font-bold font-sans uppercase tracking-tight">{t("checkout.cardTitle")}</span>
-                    <span className={`text-[10px] mt-1 leading-tight ${paymentMethod === "CARD" ? "text-[rgba(244,245,246,0.7)]" : "text-[var(--mid)]"}`}>
-                      {t("checkout.cardSubtitle")}
+                    <span className="text-sm font-bold font-sans uppercase tracking-tight">{t("checkout.qrisDanaTitle")}</span>
+                    <span className={`text-[11px] mt-1.5 leading-snug ${paymentMethod === "QRIS_DANA" ? "text-[rgba(244,245,246,0.75)]" : "text-[var(--mid)]"}`}>
+                      {t("checkout.qrisDanaSubtitle")}
                     </span>
                   </button>
                 </div>
@@ -469,67 +455,157 @@ function CheckoutContent() {
 
         {/* STAGE 2: PAYING (QRIS / GATEWAY WAITING) */}
         {stage === "PAYING" && (
-          <div className="max-w-md mx-auto border border-[var(--line)] bg-white p-6 sm:p-8 text-center space-y-6">
-            <div className="space-y-2">
-              <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold text-[#12141A] bg-[#F4F5F6] border border-[var(--line)] px-2.5 py-1 uppercase tracking-wider">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B6B] animate-live"></span>
-                {t("checkout.waitingPayment")}
-              </span>
-              <h2 className="text-2xl font-bold uppercase tracking-tight text-[#12141A] font-sans mt-2">
-                {t("checkout.scanQris")}
-              </h2>
-              <p className="text-xs text-[var(--mid)]">
-                {t("checkout.scanQrisDesc")}
-              </p>
-            </div>
-
-            {/* QR BOX INDUSTRIAL */}
-            <div className="mx-auto w-64 p-4 bg-[#F4F5F6] border-2 border-[#12141A] relative shadow-sm">
-              <div className="w-full bg-white p-3 border border-[var(--line)] flex flex-col items-center justify-center">
-                <QrCode className="w-40 h-40 text-[#12141A]" />
-                <span className="text-[9px] font-mono font-bold tracking-widest text-[#12141A] mt-2">
-                  {t("checkout.qrisStandard")}
-                </span>
-              </div>
-            </div>
-
-            <div className="space-y-1 border-t border-[var(--line)] pt-4">
-              <span className="text-xs text-[var(--mid)] uppercase tracking-wider block">
-                {t("checkout.totalNominal")}
-              </span>
-              <div className="text-3xl font-bold font-mono text-[#12141A] tracking-tight">
-                {formatIDR(selectedPlan.price)}
-              </div>
-              <span className="text-[10px] font-mono text-[var(--mid)] block mt-0.5">
-                {t("checkout.recipient")}
-              </span>
-            </div>
-
-            <div className="border-t border-[var(--line)] pt-5 space-y-3">
-              <button
-                type="button"
-                onClick={handleSimulatePaymentSuccess}
-                disabled={loading}
-                className="w-full btn-nullwave justify-center text-center py-3 bg-[#12141A] text-[#F4F5F6] hover:bg-[#FF6B6B] hover:text-[#12141A]"
-              >
-                {loading ? (
-                  <span className="inline-flex items-center gap-2">
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>{t("checkout.verifyingWebhook")}</span>
+          <div className="max-w-lg mx-auto border border-[var(--line)] bg-white p-6 sm:p-8 text-center space-y-6">
+            {paymentMethod === "QRIS_DANA" ? (
+              /* ── QRIS PEMBAYARAN MEMBER ── */
+              <>
+                <div className="space-y-2">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold text-[#12141A] bg-[#F4F5F6] border border-[var(--line)] px-2.5 py-1 uppercase tracking-wider">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B6B] animate-live"></span>
+                    PEMBAYARAN MEMBER // PRIORITAS
                   </span>
-                ) : (
-                  <span>{t("checkout.simulateSuccess")}</span>
-                )}
-              </button>
+                  <h2 className="text-2xl font-bold uppercase tracking-tight text-[#12141A] font-sans mt-2">
+                    Scan QRIS Pembayaran Member
+                  </h2>
+                  <p className="text-xs text-[var(--mid)] max-w-sm mx-auto">
+                    Scan kode QRIS resmi di bawah ini menggunakan m-Banking (BCA, Mandiri, BRI, dll) atau E-Wallet pilihan Anda.
+                  </p>
+                </div>
 
-              <button
-                type="button"
-                onClick={() => setStage("FORM")}
-                className="text-xs font-mono text-[var(--mid)] hover:text-[#12141A] block w-full text-center transition-colors underline underline-offset-4"
-              >
-                {t("checkout.changeMethod")}
-              </button>
-            </div>
+                {/* QRIS MEMBER IMAGE DISPLAY */}
+                <div className="mx-auto w-64 h-[320px] sm:w-72 sm:h-[360px] bg-white border-2 border-[#12141A] relative shadow-md p-2 flex items-center justify-center">
+                  <Image
+                    src="/qris-member-v2.jpg"
+                    alt="QRIS Pembayaran Member"
+                    fill
+                    sizes="(max-width: 640px) 256px, 288px"
+                    className="object-contain p-2"
+                    priority
+                    unoptimized
+                  />
+                </div>
+
+                {/* NMID & NOMINAL DETAILS */}
+                <div className="space-y-1.5 border-t border-[var(--line)] pt-4 font-mono text-center">
+                  <div className="bg-[#F4F5F6] border border-[var(--line)] p-2.5 text-xs text-[#12141A] space-y-0.5">
+                    <span className="font-bold block uppercase tracking-wider">QRIS STANDAR PEMBAYARAN NASIONAL</span>
+                    <span className="text-[10px] text-[var(--mid)] block tracking-wider">NMID: ID1026512051867</span>
+                  </div>
+
+                  <div className="pt-2">
+                    <span className="text-xs text-[var(--mid)] uppercase tracking-wider block">
+                      {t("checkout.totalNominal")}
+                    </span>
+                    <div className="text-3xl font-bold font-mono text-[#12141A] tracking-tight">
+                      {formatIDR(selectedPlan.price)}
+                    </div>
+                  </div>
+                </div>
+
+                {/* WHATSAPP CONFIRMATION CTA & COMPLETION */}
+                <div className="border-t border-[var(--line)] pt-5 space-y-3">
+                  <a
+                    href={`https://wa.me/6289617257030?text=${encodeURIComponent(
+                      `Halo Admin Vetra Software Studio,\n\nSaya telah melakukan *Pembayaran Member* untuk pesanan:\n• Produk: *${product.name}*\n• Paket: *${selectedPlan.name}*\n• Total: *${formatIDR(selectedPlan.price)}*\n• Email: *${customerEmail}*\n• Nama: *${customerName || "-"}*\n\nBerikut bukti transaksi saya. Mohon segera diverifikasi dan diaktivasi. Terima kasih!`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] text-[#12141A] font-bold text-xs font-mono uppercase tracking-wider py-3.5 px-4 hover:bg-[#1EBE5D] transition-colors border border-black/20 shadow-sm"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>Konfirmasi via WhatsApp (089617257030)</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={handleSimulatePaymentSuccess}
+                    disabled={loading}
+                    className="w-full btn-nullwave justify-center text-center py-3 bg-[#12141A] text-[#F4F5F6] hover:bg-[#FF6B6B] hover:text-[#12141A]"
+                  >
+                    {loading ? (
+                      <span className="inline-flex items-center gap-2">
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Memproses Verifikasi Pesanan...</span>
+                      </span>
+                    ) : (
+                      <span>Saya Sudah Bayar & Kirim Bukti →</span>
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setStage("FORM")}
+                    className="text-xs font-mono text-[var(--mid)] hover:text-[#12141A] block w-full text-center transition-colors underline underline-offset-4 pt-1"
+                  >
+                    {t("checkout.changeMethod")}
+                  </button>
+                </div>
+              </>
+            ) : (
+              /* ── QRIS PEMBAYARAN UMUM ── */
+              <>
+                <div className="space-y-2">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold text-[#12141A] bg-[#F4F5F6] border border-[var(--line)] px-2.5 py-1 uppercase tracking-wider">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B6B] animate-live"></span>
+                    PEMBAYARAN UMUM // VERIFIKASI OTOMATIS
+                  </span>
+                  <h2 className="text-2xl font-bold uppercase tracking-tight text-[#12141A] font-sans mt-2">
+                    {t("checkout.scanQris")}
+                  </h2>
+                  <p className="text-xs text-[var(--mid)] max-w-sm mx-auto">
+                    {t("checkout.scanQrisDesc")}
+                  </p>
+                </div>
+
+                {/* QR BOX INDUSTRIAL */}
+                <div className="mx-auto w-64 p-4 bg-[#F4F5F6] border-2 border-[#12141A] relative shadow-sm">
+                  <div className="w-full bg-white p-3 border border-[var(--line)] flex flex-col items-center justify-center">
+                    <QrCode className="w-40 h-40 text-[#12141A]" />
+                    <span className="text-[9px] font-mono font-bold tracking-widest text-[#12141A] mt-2">
+                      {t("checkout.qrisStandard")}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="space-y-1 border-t border-[var(--line)] pt-4">
+                  <span className="text-xs text-[var(--mid)] uppercase tracking-wider block">
+                    {t("checkout.totalNominal")}
+                  </span>
+                  <div className="text-3xl font-bold font-mono text-[#12141A] tracking-tight">
+                    {formatIDR(selectedPlan.price)}
+                  </div>
+                  <span className="text-[10px] font-mono text-[var(--mid)] block mt-0.5">
+                    {t("checkout.recipient")}
+                  </span>
+                </div>
+
+                <div className="border-t border-[var(--line)] pt-5 space-y-3">
+                  <button
+                    type="button"
+                    onClick={handleSimulatePaymentSuccess}
+                    disabled={loading}
+                    className="w-full btn-nullwave justify-center text-center py-3 bg-[#12141A] text-[#F4F5F6] hover:bg-[#FF6B6B] hover:text-[#12141A]"
+                  >
+                    {loading ? (
+                      <span className="inline-flex items-center gap-2">
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>{t("checkout.verifyingWebhook")}</span>
+                      </span>
+                    ) : (
+                      <span>{t("checkout.simulateSuccess")}</span>
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setStage("FORM")}
+                    className="text-xs font-mono text-[var(--mid)] hover:text-[#12141A] block w-full text-center transition-colors underline underline-offset-4"
+                  >
+                    {t("checkout.changeMethod")}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         )}
 
